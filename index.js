@@ -26,15 +26,19 @@ router.post('/', async (ctx) => {
         let type = typeA
         const cmd = Content.split(/\s+/)
         if (cmd[0] === '小六壬A') {
-            res = `李淳风小六壬出卦结果\n`
+            res = `【李淳风小六壬】出卦\n\n`
         } else if (cmd[0] === '小六壬B') {
             type = typeB
-            res = `九宫小六壬出卦结果\n`
+            res = `【九宫小六壬】出卦\n\n`
         }
 
         const index1 = (cmd[1] - 1) % type.liushenArr.length
         const index2 = (cmd[1] + cmd[2] - 2) % type.liushenArr.length
         const index3 = (cmd[1] + cmd[2] + cmd[3] - 3) % type.liushenArr.length
+
+        console.log(index1)
+        console.log(index2)
+        console.log(index3)
 
         res += `${type.liushenArr[index1]} -> ${type.liushenArr[index2]} -> ${type.liushenArr[index3]}`
 
