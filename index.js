@@ -25,11 +25,9 @@ router.post('/', async (ctx) => {
         let res = ''
         let type = typeA
         const cmd = Content.split(/\s+/)
-        console.log(cmd)
-        console.log(cmd[0])
-        console.log(cmd[1])
-        console.log(cmd[2])
-        console.log(cmd[3])
+        const n1 = +cmd[0]
+        const n2 = +cmd[1]
+        const n3 = +cmd[2]
 
         if (cmd[0] === '小六壬A') {
             res = `【李淳风小六壬】出卦\n\n`
@@ -38,13 +36,9 @@ router.post('/', async (ctx) => {
             res = `【九宫小六壬】出卦\n\n`
         }
 
-        const index1 = (cmd[1] - 1) % type.liushenArr.length
-        const index2 = (cmd[1] + cmd[2] - 2) % type.liushenArr.length
-        const index3 = (cmd[1] + cmd[2] + cmd[3] - 3) % type.liushenArr.length
-
-        console.log(index1)
-        console.log(index2)
-        console.log(index3)
+        const index1 = (n1 - 1) % type.liushenArr.length
+        const index2 = (n1 + n2 - 2) % type.liushenArr.length
+        const index3 = (n1 + n2 + n3 - 3) % type.liushenArr.length
 
         res += `${type.liushenArr[index1]} -> ${type.liushenArr[index2]} -> ${type.liushenArr[index3]}`
 
