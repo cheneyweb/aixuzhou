@@ -5,13 +5,14 @@ const { koaBody } = require('koa-body')
 const router = new Router()
 
 router.get('/', async (ctx) => {
-    const { ToUserName, FromUserName, MsgType, Content, CreateTime } = ctx.request.body
+    const { ToUserName, FromUserName, MsgType, Content, CreateTime, action } = ctx.request.body
 
     console.log(ToUserName)
     console.log(FromUserName)
     console.log(MsgType)
     console.log(Content)
     console.log(CreateTime)
+    console.log(action)
 
     ctx.body = 'success'
 
