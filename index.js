@@ -22,7 +22,7 @@ router.post('/', async (ctx) => {
     }
 
     if (MsgType === 'text') {
-        const res = ''
+        let res = ''
         let type = typeA
         const cmd = Content.split(/\s+/)
         if (cmd[0] === '小六壬A') {
