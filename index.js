@@ -24,7 +24,7 @@ router.post('/', async (ctx) => {
     if (MsgType === 'text') {
         const res = ''
         let type = typeA
-        const cmd = Content.spilt(/\s+/)
+        const cmd = Content.split(/\s+/)
         if (cmd[0] === '小六壬A') {
             res = `李淳风小六壬出卦结果\n`
         } else if (cmd[0] === '小六壬B') {
