@@ -30,7 +30,7 @@ router.post('/', async (ctx) => {
         let res = ''
         let type = typeA
 
-        if (cmd[0] !== '小六壬A' || cmd[0] !== '小六壬B' || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+        if ((cmd[0] !== '小六壬A' && cmd[0] !== '小六壬B') || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
             res = '【输入格式错误】，参考如下举例：\n小六壬A 23 5 11'
         } else {
             if (cmd[0] === '小六壬A') {
