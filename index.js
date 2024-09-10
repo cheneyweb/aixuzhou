@@ -14,12 +14,21 @@ router.post('/', async (ctx) => {
     console.log(CreateTime)
 
     if (MsgType === 'text') {
+        const res = ''
+        const [type, num1, num2, num3] = Content.spilt(/\s+/)
+
+        if (type === '小六壬A') {
+            res = `李淳风小六壬出卦结果 ${num1} ${num2} ${num3}`
+        } else if (type === '小六壬B') {
+            res = `九宫小六壬出卦结果 ${num1} ${num2} ${num3}`
+        }
+
         ctx.body = {
             ToUserName: FromUserName,
             FromUserName: ToUserName,
             CreateTime: CreateTime,
             MsgType: 'text',
-            Content: '这是回复的消息'
+            Content: res
         }
     }
 })
