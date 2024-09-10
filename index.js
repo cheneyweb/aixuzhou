@@ -4,7 +4,7 @@ const { koaBody } = require('koa-body')
 
 const router = new Router()
 
-router.get('/', async (ctx) => {
+router.post('/', async (ctx) => {
     const { ToUserName, FromUserName, MsgType, Content, CreateTime, action } = ctx.request.body
 
     console.log(ToUserName)
