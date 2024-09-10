@@ -25,9 +25,9 @@ router.post('/', async (ctx) => {
         let res = ''
         let type = typeA
         const cmd = Content.split(/\s+/)
-        const n1 = +cmd[0]
-        const n2 = +cmd[1]
-        const n3 = +cmd[2]
+        const n1 = +cmd[1]
+        const n2 = +cmd[2]
+        const n3 = +cmd[3]
 
         if (cmd[0] === '小六壬A') {
             res = `【李淳风小六壬】出卦\n\n`
