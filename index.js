@@ -7,21 +7,36 @@ const router = new Router()
 router.post('/', async (ctx) => {
     const { ToUserName, FromUserName, MsgType, Content, CreateTime } = ctx.request.body
 
-    console.log(ToUserName)
-    console.log(FromUserName)
-    console.log(MsgType)
-    console.log(Content)
-    console.log(CreateTime)
+    // console.log(ToUserName)
+    // console.log(FromUserName)
+    // console.log(MsgType)
+    // console.log(Content)
+    // console.log(CreateTime)
+
+    const typeA = {
+        liushenArr: ['大安', '留连', '速喜', '赤口', '小吉', '空亡']
+    }
+
+    const typeB = {
+        liushenArr: ['大安', '留连', '速喜', '赤口', '小吉', '空亡', '病符', '桃花', '天德']
+    }
 
     if (MsgType === 'text') {
         const res = ''
-        const [type, num1, num2, num3] = Content.spilt(/\s+/)
-
-        if (type === '小六壬A') {
-            res = `李淳风小六壬出卦结果 ${num1} ${num2} ${num3}`
-        } else if (type === '小六壬B') {
-            res = `九宫小六壬出卦结果 ${num1} ${num2} ${num3}`
+        let type = typeA
+        const cmd = Content.spilt(/\s+/)
+        if (cmd[0] === '小六壬A') {
+            res = `李淳风小六壬出卦结果\n`
+        } else if (cmd[0] === '小六壬B') {
+            type = typeB
+            res = `九宫小六壬出卦结果\n`
         }
+
+        const index1 = (cmd[1] - 1) % type.liushenArr.length
+        const index2 = (cmd[1] + cmd[2] - 2) % type.liushenArr.length
+        const index3 = (cmd[1] + cmd[2] + cmd[3] - 3) % type.liushenArr.length
+
+        res += `${type.liushenArr[index1]} -> ${type.liushenArr[index2]} -> ${type.liushenArr[index3]}`
 
         ctx.body = {
             ToUserName: FromUserName,
