@@ -31,30 +31,28 @@ router.post('/', async (ctx) => {
         let type = typeA
 
         if (cmd[0] !== '小六壬A' || cmd[0] !== '小六壬B' || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-            return ctx.body = '【输入格式错误】，参考如下举例：\n小六壬A 23 5 11'
-        }
-
-        if (cmd[0] === '小六壬A') {
-            res = `【李淳风小六壬】出卦\n\n`
-        } else if (cmd[0] === '小六壬B') {
-            type = typeB
-            res = `【九宫小六壬】出卦\n\n`
+            ctx.body = '【输入格式错误】，参考如下举例：\n小六壬A 23 5 11'
         } else {
-            res = '输入格式有误'
-        }
+            if (cmd[0] === '小六壬A') {
+                res = `【李淳风小六壬】出卦\n\n`
+            } else if (cmd[0] === '小六壬B') {
+                type = typeB
+                res = `【九宫小六壬】出卦\n\n`
+            }
 
-        const index1 = (n1 - 1) % type.liushenArr.length
-        const index2 = (n1 + n2 - 2) % type.liushenArr.length
-        const index3 = (n1 + n2 + n3 - 3) % type.liushenArr.length
+            const index1 = (n1 - 1) % type.liushenArr.length
+            const index2 = (n1 + n2 - 2) % type.liushenArr.length
+            const index3 = (n1 + n2 + n3 - 3) % type.liushenArr.length
 
-        res += `${type.liushenArr[index1]} -> ${type.liushenArr[index2]} -> ${type.liushenArr[index3]}`
+            res += `${type.liushenArr[index1]} -> ${type.liushenArr[index2]} -> ${type.liushenArr[index3]}`
 
-        ctx.body = {
-            ToUserName: FromUserName,
-            FromUserName: ToUserName,
-            CreateTime: CreateTime,
-            MsgType: 'text',
-            Content: res
+            ctx.body = {
+                ToUserName: FromUserName,
+                FromUserName: ToUserName,
+                CreateTime: CreateTime,
+                MsgType: 'text',
+                Content: res
+            }
         }
     }
 })
