@@ -32,7 +32,7 @@ router.post('/', async (ctx) => {
                 liushen: '留连', bagua: '巽', wuxing: '木', fangwei: '东南', xing: '文昌', title: '停止，反复，复杂', detail: '想挽留，留连是吉；否则都很恶心'
             },
             { liushen: '速喜', bagua: '离', wuxing: '火', fangwei: '正南', xing: '雷祖', title: '惊喜，快速，突然', detail: '意想不到的好事' },
-            { liushen: '赤口', bagua: '兑', wuxing: '金', fangwei: '正西', xing: '将帅', title: '争斗，凶恶，伤害', detail: '吵架，打架，斗争，诉讼是非，肉体受伤，尤其赤口叠现，' },
+            { liushen: '赤口', bagua: '兑', wuxing: '金', fangwei: '正西', xing: '将帅', title: '争斗，凶恶，伤害', detail: '吵架，打架，斗争，诉讼是非，肉体受伤，尤其赤口叠现' },
             { liushen: '小吉', bagua: '坎', wuxing: '水', fangwei: '正北', xing: '真武', title: '起步，不多，尚可', detail: '成中有缺，适合起步' },
             { liushen: '空亡', bagua: '中', wuxing: '土', fangwei: '内', xing: '玉皇', title: '失去，虚伪，空想', detail: '先得再失，尤忌金钱事，可多接触玄学，哲学，心理学' },
             { liushen: '病符', bagua: '坤', wuxing: '土', fangwei: '西南', xing: '后土', title: '病态，异常，治疗', detail: '先有病，才需要“治”' },
@@ -63,6 +63,10 @@ router.post('/', async (ctx) => {
 
             if (cmd[0] === '小六壬A') {
                 res += `${type[index1].liushen}(${type[index1].liushou}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].liushou}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].liushou}${type[index3].wuxing})`
+                res += `\n`
+                res += `\n【${type[index1].liushen}】${type[index1].title}；${type[index1].detail}\n`
+                res += `\n【${type[index2].liushen}】${type[index2].title}；${type[index2].detail}\n`
+                res += `\n【${type[index3].liushen}】${type[index3].title}；${type[index3].detail}\n`
             } else if (cmd[0] === '小六壬B') {
                 res += `${type[index1].liushen}(${type[index1].bagua}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].bagua}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].bagua}${type[index3].wuxing})`
                 res += `\n`
