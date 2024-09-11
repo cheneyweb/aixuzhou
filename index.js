@@ -16,6 +16,8 @@ router.post('/', async (ctx) => {
     // console.log(CreateTime)
 
     if (MsgType === 'text') {
+        const MENU_A = '小六壬'
+        const MENU_B = '九宫小六壬'
         const typeA = [
             { liushen: '大安', liushou: '青龙', wuxing: '木', title: '长期，缓慢，稳定', detail: '求安稳，大安最吉；求变化，大安不吉' },
             { liushen: '留连', liushou: '四方', wuxing: '土', title: '停止，反复，复杂', detail: '想挽留，留连是吉；否则都很恶心' },
@@ -47,12 +49,12 @@ router.post('/', async (ctx) => {
         let res = ''
         let type = typeA
 
-        if ((cmd[0] !== '小六壬A' && cmd[0] !== '小六壬B') || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+        if ((cmd[0] !== MENU_A && cmd[0] !== MENU_B) || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
             res = '【输入格式错误】，参考如下举例：\n小六壬A 23 5 11'
         } else {
-            if (cmd[0] === '小六壬A') {
+            if (cmd[0] === MENU_A) {
                 res = `【李淳风小六壬】出卦\n\n`
-            } else if (cmd[0] === '小六壬B') {
+            } else if (cmd[0] === MENU_B) {
                 type = typeB
                 res = `【九宫小六壬】出卦\n\n`
             }
@@ -61,13 +63,13 @@ router.post('/', async (ctx) => {
             const index2 = (n1 + n2 - 2) % type.length
             const index3 = (n1 + n2 + n3 - 3) % type.length
 
-            if (cmd[0] === '小六壬A') {
+            if (cmd[0] === MENU_A) {
                 res += `${type[index1].liushen}(${type[index1].liushou}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].liushou}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].liushou}${type[index3].wuxing})`
                 res += `\n`
                 res += `\n【${type[index1].liushen}】${type[index1].title}；${type[index1].detail}\n`
                 res += `\n【${type[index2].liushen}】${type[index2].title}；${type[index2].detail}\n`
                 res += `\n【${type[index3].liushen}】${type[index3].title}；${type[index3].detail}\n`
-            } else if (cmd[0] === '小六壬B') {
+            } else if (cmd[0] === MENU_B) {
                 res += `${type[index1].liushen}(${type[index1].bagua}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].bagua}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].bagua}${type[index3].wuxing})`
                 res += `\n`
                 res += `\n【${type[index1].liushen}】${type[index1].title}；${type[index1].detail}\n${type[index1].fangwei} ${type[index1].xing}\n`
