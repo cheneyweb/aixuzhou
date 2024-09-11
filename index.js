@@ -50,7 +50,7 @@ router.post('/', async (ctx) => {
         let type = typeA
 
         if ((cmd[0] !== MENU_A && cmd[0] !== MENU_B) || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-            res = '【输入格式错误】，参考如下举例：\n小六壬 5 19 6'
+            res = '【输入格式错误】，参考如下举例：\n小六壬 5 19 6\n或\n九宫小六壬 21 2 11'
         } else {
             if (cmd[0] === MENU_A) {
                 res = `【李淳风小六壬】出卦\n\n`
