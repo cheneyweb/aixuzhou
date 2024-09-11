@@ -50,7 +50,7 @@ router.post('/', async (ctx) => {
         let type = typeA
 
         if ((cmd[0] !== MENU_A && cmd[0] !== MENU_B) || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-            res = '【输入格式错误】，参考如下举例：\n小六壬A 23 5 11'
+            res = '【输入格式错误】，参考如下举例：\n小六壬 5 19 6'
         } else {
             if (cmd[0] === MENU_A) {
                 res = `【李淳风小六壬】出卦\n\n`
@@ -86,8 +86,6 @@ router.post('/', async (ctx) => {
             Content: res
         }
     }
-
-    ctx.body = ''
 })
 
 const app = new Koa()
