@@ -86,6 +86,8 @@ router.post('/', async (ctx) => {
             Content: res
         }
     }
+
+    ctx.body = ''
 })
 
 const app = new Koa()
