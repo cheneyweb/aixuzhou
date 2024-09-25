@@ -9,6 +9,7 @@ const SHUMAP = { '小六壬': xiaoliuren, '紫微': ziwei }
 const router = new Router()
 
 router.post('/', async (ctx) => {
+    console.time('计算用时')
     const { ToUserName, FromUserName, MsgType, Content, CreateTime } = ctx.request.body
     let res = ''
     if (MsgType === 'text') {
@@ -31,6 +32,7 @@ router.post('/', async (ctx) => {
             MsgType: 'text',
             Content: res
         }
+        console.timeEnd('计算用时')
     }
 })
 
