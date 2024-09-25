@@ -1,10 +1,6 @@
 const lunar = require('./lunar.js')
 const xiaoliuren = require('../data/xiaoliuren.js')
 
-function getLiuQin() {
-
-}
-
 function getRes(Content) {
     const MENU_A = '小六壬'
     const MENU_B = '九宫小六壬'
@@ -36,13 +32,13 @@ function getRes(Content) {
         if (cmd[0] === MENU_A) {
             const filters = xiaoliuren.LICHUNFENGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
 
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} ${tian.name}：${tian.liushou}|${tian.wuxing} ○`
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} ${di.name}：${di.liushou}|${di.wuxing} ⦿`
-            res += `\n世位 ${ren.name}：${ren.liushou}|${ren.wuxing} ●`
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ○`
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ◐`
+            res += `\n世位 [${ren.name}] ${ren.liushou}|${ren.wuxing} ●`
 
             res += `\n\n【六亲八卦】`
             for (let item of filters) {
-                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} ${item.name}：${item.liushou}|${item.wuxing}`
+                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing}`
             }
 
             res += `\n\n【大象运势】`
@@ -62,3 +58,5 @@ function getRes(Content) {
 }
 
 module.exports = { getRes }
+
+// console.log(getRes('小六壬 12 21 12'))
