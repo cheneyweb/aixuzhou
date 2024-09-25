@@ -129,7 +129,7 @@ function getRes(Content) {
     const shengNianSiHuas = getShengNianSiHuas(life)
     const liXinSiHuas = getLiXinSiHuas(life)
     const xiangXinSiHuas = getXiangXinSiHuas(life)
-    const feiGongSiHuaMap = getFeiGongSiHuaMap(life)
+    // const feiGongSiHuaMap = getFeiGongSiHuaMap(life)
     const sanHeGongMap = getSanHeGongMap(life)
     const siZhengGongMap = getSiZhengGongMap(life)
     const gongNanNvMap = getGongNanNvMap(life)
@@ -150,14 +150,14 @@ function getRes(Content) {
         res += `\n${item[0]} → ${item[1]} ${item[2]} 向心化 ${item[3]}`
     }
 
-    res += `\n\n【飞宫四化】`
-    for (let item in feiGongSiHuaMap) {
-        res += `\n${item}`
-        for (let feigong of feiGongSiHuaMap[item]) {
-            res += `\n    飞 ${feigong[0]} ${feigong[1]} 飞宫化 ${feigong[2]}`
-        }
-        res += `\n`
-    }
+    // res += `\n\n【飞宫四化】`
+    // for (let item in feiGongSiHuaMap) {
+    //     res += `\n${item}`
+    //     for (let feigong of feiGongSiHuaMap[item]) {
+    //         res += `\n    飞 ${feigong[0]} ${feigong[1]} 飞宫化 ${feigong[2]}`
+    //     }
+    //     res += `\n`
+    // }
 
     res += `\n\n【三合宫位】`
     for (let item in sanHeGongMap) {
