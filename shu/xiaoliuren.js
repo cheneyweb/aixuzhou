@@ -58,5 +58,3 @@ function getRes(Content) {
 }
 
 module.exports = { getRes }
-
-// console.log(getRes('小六壬 12 21 12'))

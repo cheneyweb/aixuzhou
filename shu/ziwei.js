@@ -134,7 +134,7 @@ function getRes(Content) {
     const siZhengGongMap = getSiZhengGongMap(life)
     const gongNanNvMap = getGongNanNvMap(life)
 
-    res += `===紫微===`
+    res += `===紫微斗数解盘===`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} 生年化 ${item[2]}`
@@ -150,34 +150,34 @@ function getRes(Content) {
         res += `\n${item[0]} → ${item[1]} ${item[2]} 向心化 ${item[3]}`
     }
 
-    // res += `\n\n【飞宫四化】`
-    // for (let item in feiGongSiHuaMap) {
-    //     res += `\n${item}`
-    //     for (let feigong of feiGongSiHuaMap[item]) {
-    //         res += `\n    飞 ${feigong[0]} ${feigong[1]} 飞宫化 ${feigong[2]}`
-    //     }
-    //     res += `\n`
-    // }
+    res += `\n\n【飞宫四化】`
+    for (let item in feiGongSiHuaMap) {
+        res += `\n${item}`
+        for (let feigong of feiGongSiHuaMap[item]) {
+            res += `\n    飞 ${feigong[0]} ${feigong[1]} 飞宫化 ${feigong[2]}`
+        }
+        res += `\n`
+    }
 
-    // res += `\n\n【三合宫位】`
-    // for (let item in sanHeGongMap) {
-    //     res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
-    // }
+    res += `\n\n【三合宫位】`
+    for (let item in sanHeGongMap) {
+        res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
+    }
 
-    // res += `\n\n【四正宫位】`
-    // for (let item in siZhengGongMap) {
-    //     res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
-    // }
+    res += `\n\n【四正宫位】`
+    for (let item in siZhengGongMap) {
+        res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
+    }
 
-    // res += `\n\n【宫位男女】`
-    // for (let item in gongNanNvMap) {
-    //     if (gongNanNvMap[item].length > 0) {
-    //         res += `\n${item}: `
-    //     }
-    //     for (let star of gongNanNvMap[item]) {
-    //         res += `${star[0]}${star[1]} `
-    //     }
-    // }
+    res += `\n\n【宫位男女】`
+    for (let item in gongNanNvMap) {
+        if (gongNanNvMap[item].length > 0) {
+            res += `\n${item}: `
+        }
+        for (let star of gongNanNvMap[item]) {
+            res += `${star[0]}${star[1]} `
+        }
+    }
 
     // console.log(shengNianSiHuas)
     // console.log(liXinSiHuas)
