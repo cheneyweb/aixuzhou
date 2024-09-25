@@ -38,3 +38,5 @@ router.post('/', async (ctx) => {
 const app = new Koa()
 app.use(koaBody()).use(router.routes()).use(router.allowedMethods())
 app.listen(process.env.PORT || 80, () => { console.log('STARTED', process.env.PORT || 80) })
+
+// console.log(SHUMAP['小六壬'].getRes('小六壬 456 75 15'))

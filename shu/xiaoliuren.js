@@ -1,6 +1,10 @@
 const lunar = require('./lunar.js')
 const xiaoliuren = require('../data/xiaoliuren.js')
 
+function getLiuQin() {
+
+}
+
 function getRes(Content) {
     const MENU_A = '小六壬'
     const MENU_B = '九宫小六壬'
@@ -23,24 +27,34 @@ function getRes(Content) {
             res = `【九宫小六壬】出卦 - `
         }
 
-        res += `${lunar.getLunarHour()}\n\n`
+        res += `${lunar.getLunarHour()}\n`
 
-        const index1 = (n1 - 1) % type.length
-        const index2 = (n1 + n2 - 2) % type.length
-        const index3 = (n1 + n2 + n3 - 3) % type.length
+        const tian = type[(n1 - 1) % type.length]
+        const di = type[(n1 + n2 - 2) % type.length]
+        const ren = type[(n1 + n2 + n3 - 3) % type.length]
 
         if (cmd[0] === MENU_A) {
-            res += `${type[index1].liushen}(${type[index1].liushou}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].liushou}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].liushou}${type[index3].wuxing})`
-            res += `\n`
-            res += `\n【${type[index1].liushen}】${type[index1].title}；${type[index1].detail}\n`
-            res += `\n【${type[index2].liushen}】${type[index2].title}；${type[index2].detail}\n`
-            res += `\n【${type[index3].liushen}】${type[index3].title}；${type[index3].detail}\n`
+            const filters = xiaoliuren.LICHUNFENGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
+
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} ${tian.name}：${tian.liushou}|${tian.wuxing} ○`
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} ${di.name}：${di.liushou}|${di.wuxing} ⦿`
+            res += `\n世位 ${ren.name}：${ren.liushou}|${ren.wuxing} ●`
+
+            res += `\n\n【六亲八卦】`
+            for (let item of filters) {
+                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} ${item.name}：${item.liushou}|${item.wuxing}`
+            }
+
+            res += `\n\n【大象运势】`
+            res += `\n[${tian.name}] ${tian.title}；${tian.detail}\n`
+            res += `\n[${di.name}] ${di.title}；${di.detail}\n`
+            res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n`
         } else if (cmd[0] === MENU_B) {
-            res += `${type[index1].liushen}(${type[index1].bagua}${type[index1].wuxing})->${type[index2].liushen}(${type[index2].bagua}${type[index2].wuxing})->${type[index3].liushen}(${type[index3].bagua}${type[index3].wuxing})`
+            res += `${tian.name}(${tian.bagua}${tian.wuxing})->${di.name}(${di.bagua}${di.wuxing})->${ren.name}(${ren.bagua}${ren.wuxing})`
             res += `\n`
-            res += `\n【${type[index1].liushen}】${type[index1].title}；${type[index1].detail}\n${type[index1].fangwei} ${type[index1].xing}\n`
-            res += `\n【${type[index2].liushen}】${type[index2].title}；${type[index2].detail}\n${type[index2].fangwei} ${type[index2].xing}\n`
-            res += `\n【${type[index3].liushen}】${type[index3].title}；${type[index3].detail}\n${type[index3].fangwei} ${type[index3].xing}\n`
+            res += `\n[${tian.name}] ${tian.title}；${tian.detail}\n${tian.fangwei} ${tian.xing}\n`
+            res += `\n[${di.name}] ${di.title}；${di.detail}\n${di.fangwei} ${di.xing}\n`
+            res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n${ren.fangwei} ${ren.xing}\n`
         }
     }
 
