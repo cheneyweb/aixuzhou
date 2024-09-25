@@ -10,7 +10,8 @@ const router = new Router()
 
 router.post('/', async (ctx) => {
     const { ToUserName, FromUserName, MsgType, Content, CreateTime } = ctx.request.body
-
+    console.log(MsgType)
+    console.log(Content)
     let res = ''
     if (MsgType === 'text') {
         if (Content.includes('小六壬')) {
@@ -22,6 +23,7 @@ router.post('/', async (ctx) => {
 
     if (res) {
         res = SHUMAP[res].getRes(Content)
+        console.log(res)
     }
 
     if (res) {
@@ -40,3 +42,4 @@ app.use(koaBody()).use(router.routes()).use(router.allowedMethods())
 app.listen(process.env.PORT || 80, () => { console.log('STARTED', process.env.PORT || 80) })
 
 // console.log(SHUMAP['小六壬'].getRes('小六壬 456 75 15'))
+// console.log(SHUMAP['紫微'].getRes('紫微'))
