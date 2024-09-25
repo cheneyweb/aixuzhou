@@ -134,7 +134,7 @@ function getRes(Content) {
     const siZhengGongMap = getSiZhengGongMap(life)
     const gongNanNvMap = getGongNanNvMap(life)
 
-    res += `===紫微斗数解盘===`
+    res += `===紫微===`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} 生年化 ${item[2]}`
