@@ -109,28 +109,28 @@ function getSiHuas(life) {
                 }
             }
         }
+    }
 
-        // 遍历生年四化
-        for (let shengNianSiHua of shengNianSiHuas) {
-            const shengNianSiHuaPalace = life.palace(shengNianSiHua[0])
-            // 三合破
-            const anotherSanHeGongs = ziwei.SANHEMAP[shengNianSiHuaPalace.earthlyBranch]
-            const anotherSanHePalace1 = diZhiGongMap[anotherSanHeGongs[0]]
-            const anotherSanHePalace2 = diZhiGongMap[anotherSanHeGongs[1]]
-            for (let liXinSiHua of liXinSiHuas) {
-                if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSanHePalace1.name || liXinSiHua[0] === anotherSanHePalace2.name)) {
-                    sanHePos.push([...shengNianSiHua, ...liXinSiHua])
-                }
+    // 遍历生年四化
+    for (let shengNianSiHua of shengNianSiHuas) {
+        const shengNianSiHuaPalace = life.palace(shengNianSiHua[0])
+        // 三合破
+        const anotherSanHeGongs = ziwei.SANHEMAP[shengNianSiHuaPalace.earthlyBranch]
+        const anotherSanHePalace1 = diZhiGongMap[anotherSanHeGongs[0]]
+        const anotherSanHePalace2 = diZhiGongMap[anotherSanHeGongs[1]]
+        for (let liXinSiHua of liXinSiHuas) {
+            if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSanHePalace1.name || liXinSiHua[0] === anotherSanHePalace2.name)) {
+                sanHePos.push([...shengNianSiHua, ...liXinSiHua])
             }
-            // 四正破
-            const anotherSiZhengGongs = ziwei.SIZHENGMAP[shengNianSiHuaPalace.earthlyBranch]
-            const anotherSiZhengPalace1 = diZhiGongMap[anotherSiZhengGongs[0]]
-            const anotherSiZhengPalace2 = diZhiGongMap[anotherSiZhengGongs[1]]
-            const anotherSiZhengPalace3 = diZhiGongMap[anotherSiZhengGongs[2]]
-            for (let liXinSiHua of liXinSiHuas) {
-                if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSiZhengPalace1.name || liXinSiHua[0] === anotherSiZhengPalace2.name || liXinSiHua[0] === anotherSiZhengPalace3.name)) {
-                    siZhengPos.push([...shengNianSiHua, ...liXinSiHua])
-                }
+        }
+        // 四正破
+        const anotherSiZhengGongs = ziwei.SIZHENGMAP[shengNianSiHuaPalace.earthlyBranch]
+        const anotherSiZhengPalace1 = diZhiGongMap[anotherSiZhengGongs[0]]
+        const anotherSiZhengPalace2 = diZhiGongMap[anotherSiZhengGongs[1]]
+        const anotherSiZhengPalace3 = diZhiGongMap[anotherSiZhengGongs[2]]
+        for (let liXinSiHua of liXinSiHuas) {
+            if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSiZhengPalace1.name || liXinSiHua[0] === anotherSiZhengPalace2.name || liXinSiHua[0] === anotherSiZhengPalace3.name)) {
+                siZhengPos.push([...shengNianSiHua, ...liXinSiHua])
             }
         }
     }
@@ -272,8 +272,7 @@ function getRes(Content) {
     }
 
     const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos } = getSiHuas(life)
-
-    res += `===紫微斗数解盘===`
+    res += `===紫微斗数解盘: ${life.chineseDate}===`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} ${item[2]}`
@@ -330,11 +329,12 @@ function getRes(Content) {
     // console.log(sanHePos)
     // console.log(siZhengPos)
 
-    // console.log(res)
+    console.log(res)
 
     return res
 }
 
 module.exports = { getRes }
 
-// getRes('紫微 19910928 酉时 男')
+// getRes('紫微 19980928 酉时 男')
+getRes('紫微 20020328 辰时 女')
