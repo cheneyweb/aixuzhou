@@ -18,6 +18,14 @@ function getSiHuas(life) {
     // 宫位男女星 {宫:[[星,男/女]]}
     const gongNanNvMap = {}
 
+    // 地支宫位索引MAP
+    const diZhiGongMap = {}
+
+    // 三合破
+    const sanHePos = []
+    // 四正破
+    const siZhengPos = []
+
     // 遍历三合宫位
     for (let sanhe of ziwei.SANHES) {
         sanHeGongMap[sanhe] = []
@@ -44,6 +52,8 @@ function getSiHuas(life) {
 
     // 遍历每宫
     for (palaceFrom of life.palaces) {
+        // 建立地支宫位索引MAP
+        diZhiGongMap[palaceFrom.earthlyBranch] = palaceFrom
         // 合并每宫主辅星耀
         const starFroms = palaceFrom.majorStars.concat(palaceFrom.minorStars)
         // 获取对宫
@@ -99,9 +109,33 @@ function getSiHuas(life) {
                 }
             }
         }
+
+        // 遍历生年四化
+        for (let shengNianSiHua of shengNianSiHuas) {
+            const shengNianSiHuaPalace = life.palace(shengNianSiHua[0])
+            // 三合破
+            const anotherSanHeGongs = ziwei.SANHEMAP[shengNianSiHuaPalace.earthlyBranch]
+            const anotherSanHePalace1 = diZhiGongMap[anotherSanHeGongs[0]]
+            const anotherSanHePalace2 = diZhiGongMap[anotherSanHeGongs[1]]
+            for (let liXinSiHua of liXinSiHuas) {
+                if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSanHePalace1.name || liXinSiHua[0] === anotherSanHePalace2.name)) {
+                    sanHePos.push([...shengNianSiHua, ...liXinSiHua])
+                }
+            }
+            // 四正破
+            const anotherSiZhengGongs = ziwei.SIZHENGMAP[shengNianSiHuaPalace.earthlyBranch]
+            const anotherSiZhengPalace1 = diZhiGongMap[anotherSiZhengGongs[0]]
+            const anotherSiZhengPalace2 = diZhiGongMap[anotherSiZhengGongs[1]]
+            const anotherSiZhengPalace3 = diZhiGongMap[anotherSiZhengGongs[2]]
+            for (let liXinSiHua of liXinSiHuas) {
+                if (liXinSiHua[2] === shengNianSiHua[2] && (liXinSiHua[0] === anotherSiZhengPalace1.name || liXinSiHua[0] === anotherSiZhengPalace2.name || liXinSiHua[0] === anotherSiZhengPalace3.name)) {
+                    siZhengPos.push([...shengNianSiHua, ...liXinSiHua])
+                }
+            }
+        }
     }
 
-    return { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap }
+    return { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos }
 }
 
 // // 生年四化 [宫,星,化]
@@ -222,24 +256,37 @@ function getSiHuas(life) {
 
 function getRes(Content) {
     let res = ''
+    let life
+    try {
+        const cmd = Content.split(/\s+/)
+        const date = cmd[1]
+        const time = cmd[2]
+        const sex = cmd[3]
 
-    const life = astro.bySolar('1998-9-28', 9, '男')
-    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap } = getSiHuas(life)
+        const formattedDate = date.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')
+        const formattedTime = ziwei.SHICHENMAP[time[0]]
+        life = astro.bySolar(formattedDate, formattedTime, sex)
+    } catch (error) {
+        res = '【输入格式错误】，参考如下举例：\n紫微 阳历年月日 时辰 性别\n紫微 19990821 申时 男'
+        return
+    }
+
+    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos } = getSiHuas(life)
 
     res += `===紫微斗数解盘===`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
-        res += `\n${item[0]} ${item[1]} 生年化 ${item[2]}`
+        res += `\n${item[0]} ${item[1]} ${item[2]}`
     }
 
     res += `\n\n【离心四化】`
     for (let item of liXinSiHuas) {
-        res += `\n${item[0]} ↑ ${item[1]} 离心化 ${item[2]}`
+        res += `\n${item[0]} ↑ ${item[1]} ${item[2]}`
     }
 
     res += `\n\n【向心四化】`
     for (let item of xiangXinSiHuas) {
-        res += `\n${item[0]} → ${item[1]} ${item[2]} 向心化 ${item[3]}`
+        res += `\n${item[0]} → ${item[1]} ${item[2]} ${item[3]}`
     }
 
     // res += `\n\n【飞宫四化】`
@@ -251,14 +298,16 @@ function getRes(Content) {
     //     res += `\n`
     // }
 
-    res += `\n\n【三合宫位】`
-    for (let item in sanHeGongMap) {
-        res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
+    res += `\n\n【三合破】`
+    for (let item of sanHePos) {
+        // res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
 
-    res += `\n\n【四正宫位】`
-    for (let item in siZhengGongMap) {
-        res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
+    res += `\n\n【四正破】`
+    for (let item of siZhengPos) {
+        // res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
 
     res += `\n\n【宫位男女】`
@@ -270,6 +319,7 @@ function getRes(Content) {
             res += `${star[0]}${star[1]} `
         }
     }
+
     // console.log(shengNianSiHuas)
     // console.log(liXinSiHuas)
     // console.log(xiangXinSiHuas)
@@ -277,9 +327,14 @@ function getRes(Content) {
     // console.log(sanHeGongMap)
     // console.log(siZhengGongMap)
     // console.log(gongNanNvMap)
+    // console.log(sanHePos)
+    // console.log(siZhengPos)
+
+    console.log(res)
+
     return res
 }
 
 module.exports = { getRes }
 
-getRes()
+// getRes('紫微 19910928 酉时 男')
