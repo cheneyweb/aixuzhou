@@ -32,6 +32,7 @@ router.post('/', async (ctx) => {
             MsgType: 'text',
             Content: res
         }
+        console.log(res)
         console.log('长度', res.length)
     }
     console.timeEnd('用时')
@@ -42,4 +43,7 @@ app.use(koaBody()).use(router.routes()).use(router.allowedMethods())
 app.listen(process.env.PORT || 80, () => { console.log('STARTED', process.env.PORT || 80) })
 
 // console.log(SHUMAP['小六壬'].getRes('小六壬 456 75 15'))
-// console.log(SHUMAP['紫微'].getRes('紫微').length)
+// console.log(SHUMAP['紫微'].getRes('紫微 20020328 辰时 女'))
+
+// getRes('紫微 19980928 酉时 男')
+// getRes('紫微 200203281 辰时 女')

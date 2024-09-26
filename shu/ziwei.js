@@ -267,8 +267,7 @@ function getRes(Content) {
         const formattedTime = ziwei.SHICHENMAP[time[0]]
         life = astro.bySolar(formattedDate, formattedTime, sex)
     } catch (error) {
-        res = '【输入格式错误】，参考如下举例：\n紫微 阳历年月日 时辰 性别\n紫微 19990821 申时 男'
-        return
+        return res = '【输入格式错误】，格式如下：\n紫微 阳历年月日 时辰 性别\n\n【参考如下举例】\n紫微 19990821 申时 男'
     }
 
     const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos } = getSiHuas(life)
@@ -335,6 +334,3 @@ function getRes(Content) {
 }
 
 module.exports = { getRes }
-
-// getRes('紫微 19980928 酉时 男')
-// getRes('紫微 20020328 辰时 女')
