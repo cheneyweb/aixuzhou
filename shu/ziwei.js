@@ -330,7 +330,7 @@ function getRes(Content) {
     // console.log(sanHePos)
     // console.log(siZhengPos)
 
-    console.log(res)
+    // console.log(res)
 
     return res
 }
