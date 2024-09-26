@@ -114,44 +114,44 @@ const GUAS = [
     },
     {
         'index': 7,
-        'symbol': '',
-        'shortName': '',
-        'name': '',
-        'struct': '',
-        'title': '',
-        'level': '',
-        'imagery': '',
-        'guaci': '',
-        'tuiduan': '',
-        'daxiang': '',
-        'yunshi': '',
-        'aiqing': '',
-        'jibing': '',
-        'shiwu': '',
-        'susong': ''
+        'symbol': '䷆',
+        'shortName': '师',
+        'name': '地水师',
+        'struct': '坤上坎下,土上水下,阴上阳下,母上中男下,西南上北下',
+        'title': '马到成功',
+        'level': '上平卦',
+        'imagery': '以寡服众之意,地势临渊之象',
+        'guaci': '将帅领旨去出征，骑着烈马拉硬弓。百步穿杨去的准，箭射金钱喜气生',
+        'tuiduan': '疾病大好，走失能找，行人有信，百事凑巧',
+        'daxiang': '养兵聚众，出师攻伐之象，彼此有伤，难得安宁',
+        'yunshi': '困难重重，凡事以正规行事，忌独断独行、投机取巧，提防潜在敌人',
+        'aiqing': '阴盛阳衰，须提防色情之厄，似多角关系，求婚难成',
+        'jibing': '病况严重，提防心脏或腹腔肿瘤等',
+        'shiwu': '不会出现，即或寻回，也已损坏',
+        'susong': '宜进不宜退，内心虽忧，但得贵人之助'
     },
     {
         'index': 8,
-        'symbol': '',
-        'shortName': '',
-        'name': '',
-        'struct': '',
-        'title': '',
-        'level': '',
-        'imagery': '',
-        'guaci': '',
-        'tuiduan': '',
-        'daxiang': '',
-        'yunshi': '',
-        'aiqing': '',
-        'jibing': '',
-        'shiwu': '',
-        'susong': ''
+        'symbol': '䷇',
+        'shortName': '比',
+        'name': '水地比',
+        'struct': '坎上坤下,水上土下,阳上土下,中男上母下,北上西南下',
+        'title': '船得顺风',
+        'level': '上吉卦',
+        'imagery': '安逸进取之意,众星拱月之象',
+        'guaci': '顺风行船撒起棚，上天又助一篷风。不用费力逍遥去，任意而行大亨通',
+        'tuiduan': '走失可寻，见官有理，婚姻求名，保管恭喜',
+        'daxiang': '一阳统五阴，比邻相亲相辅，和乐之象',
+        'yunshi': '平顺，可得贵人提拔，凡事宜速战速决，不可过份迟疑',
+        'aiqing': '两情相悦，美好良缘',
+        'jibing': '新病宜速就医，久病则危，为腹、肾、耳等疾',
+        'shiwu': '不会再现。通常均已遭损毁',
+        'susong': '宜以和解态度面对，虽小人多，但可胜诉'
     },
 
     {
         'index': 9,
-        'symbol': '',
+        'symbol': '䷈',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -169,7 +169,7 @@ const GUAS = [
     },
     {
         'index': 10,
-        'symbol': '',
+        'symbol': '䷉',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -187,7 +187,7 @@ const GUAS = [
     },
     {
         'index': 11,
-        'symbol': '',
+        'symbol': '䷊',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -205,7 +205,7 @@ const GUAS = [
     },
     {
         'index': 12,
-        'symbol': '',
+        'symbol': '䷋',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -223,7 +223,7 @@ const GUAS = [
     },
     {
         'index': 13,
-        'symbol': '',
+        'symbol': '䷌',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -241,7 +241,7 @@ const GUAS = [
     },
     {
         'index': 14,
-        'symbol': '',
+        'symbol': '䷍',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -259,7 +259,7 @@ const GUAS = [
     },
     {
         'index': 15,
-        'symbol': '',
+        'symbol': '䷎',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -277,7 +277,7 @@ const GUAS = [
     },
     {
         'index': 16,
-        'symbol': '',
+        'symbol': '䷏',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -296,7 +296,7 @@ const GUAS = [
 
     {
         'index': 17,
-        'symbol': '',
+        'symbol': '䷐',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -314,7 +314,7 @@ const GUAS = [
     },
     {
         'index': 18,
-        'symbol': '',
+        'symbol': '䷑',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -332,7 +332,7 @@ const GUAS = [
     },
     {
         'index': 19,
-        'symbol': '',
+        'symbol': '䷒',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -350,7 +350,7 @@ const GUAS = [
     },
     {
         'index': 20,
-        'symbol': '',
+        'symbol': '䷓',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -368,7 +368,7 @@ const GUAS = [
     },
     {
         'index': 21,
-        'symbol': '',
+        'symbol': '䷔',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -386,7 +386,7 @@ const GUAS = [
     },
     {
         'index': 22,
-        'symbol': '',
+        'symbol': '䷕',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -404,7 +404,7 @@ const GUAS = [
     },
     {
         'index': 23,
-        'symbol': '',
+        'symbol': '䷖',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -422,7 +422,7 @@ const GUAS = [
     },
     {
         'index': 24,
-        'symbol': '',
+        'symbol': '䷗',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -441,7 +441,7 @@ const GUAS = [
 
     {
         'index': 25,
-        'symbol': '',
+        'symbol': '䷘',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -459,7 +459,7 @@ const GUAS = [
     },
     {
         'index': 26,
-        'symbol': '',
+        'symbol': '䷙',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -477,7 +477,7 @@ const GUAS = [
     },
     {
         'index': 27,
-        'symbol': '',
+        'symbol': '䷚',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -495,7 +495,7 @@ const GUAS = [
     },
     {
         'index': 28,
-        'symbol': '',
+        'symbol': '䷛',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -513,7 +513,7 @@ const GUAS = [
     },
     {
         'index': 29,
-        'symbol': '',
+        'symbol': '䷜',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -531,7 +531,7 @@ const GUAS = [
     },
     {
         'index': 30,
-        'symbol': '',
+        'symbol': '䷝',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -549,7 +549,7 @@ const GUAS = [
     },
     {
         'index': 31,
-        'symbol': '',
+        'symbol': '䷞',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -567,7 +567,7 @@ const GUAS = [
     },
     {
         'index': 32,
-        'symbol': '',
+        'symbol': '䷟',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -586,7 +586,7 @@ const GUAS = [
 
     {
         'index': 33,
-        'symbol': '',
+        'symbol': '䷠',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -604,7 +604,7 @@ const GUAS = [
     },
     {
         'index': 34,
-        'symbol': '',
+        'symbol': '䷡',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -622,7 +622,7 @@ const GUAS = [
     },
     {
         'index': 35,
-        'symbol': '',
+        'symbol': '䷢',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -640,7 +640,7 @@ const GUAS = [
     },
     {
         'index': 36,
-        'symbol': '',
+        'symbol': '䷣',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -658,7 +658,7 @@ const GUAS = [
     },
     {
         'index': 37,
-        'symbol': '',
+        'symbol': '䷤',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -676,7 +676,7 @@ const GUAS = [
     },
     {
         'index': 38,
-        'symbol': '',
+        'symbol': '䷥',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -694,7 +694,7 @@ const GUAS = [
     },
     {
         'index': 39,
-        'symbol': '',
+        'symbol': '䷦',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -712,7 +712,7 @@ const GUAS = [
     },
     {
         'index': 40,
-        'symbol': '',
+        'symbol': '䷧',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -731,7 +731,7 @@ const GUAS = [
 
     {
         'index': 41,
-        'symbol': '',
+        'symbol': '䷨',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -749,7 +749,7 @@ const GUAS = [
     },
     {
         'index': 42,
-        'symbol': '',
+        'symbol': '䷩',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -767,7 +767,7 @@ const GUAS = [
     },
     {
         'index': 43,
-        'symbol': '',
+        'symbol': '䷪',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -785,7 +785,7 @@ const GUAS = [
     },
     {
         'index': 44,
-        'symbol': '',
+        'symbol': '䷫',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -803,7 +803,7 @@ const GUAS = [
     },
     {
         'index': 45,
-        'symbol': '',
+        'symbol': '䷬',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -821,7 +821,7 @@ const GUAS = [
     },
     {
         'index': 46,
-        'symbol': '',
+        'symbol': '䷭',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -839,7 +839,7 @@ const GUAS = [
     },
     {
         'index': 47,
-        'symbol': '',
+        'symbol': '䷮',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -857,7 +857,7 @@ const GUAS = [
     },
     {
         'index': 48,
-        'symbol': '',
+        'symbol': '䷯',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -876,7 +876,7 @@ const GUAS = [
 
     {
         'index': 49,
-        'symbol': '',
+        'symbol': '䷰',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -894,7 +894,7 @@ const GUAS = [
     },
     {
         'index': 50,
-        'symbol': '',
+        'symbol': '䷱',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -912,7 +912,7 @@ const GUAS = [
     },
     {
         'index': 51,
-        'symbol': '',
+        'symbol': '䷲',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -930,7 +930,7 @@ const GUAS = [
     },
     {
         'index': 52,
-        'symbol': '',
+        'symbol': '䷳',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -948,7 +948,7 @@ const GUAS = [
     },
     {
         'index': 53,
-        'symbol': '',
+        'symbol': '䷴',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -966,7 +966,7 @@ const GUAS = [
     },
     {
         'index': 54,
-        'symbol': '',
+        'symbol': '䷵',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -984,7 +984,7 @@ const GUAS = [
     },
     {
         'index': 55,
-        'symbol': '',
+        'symbol': '䷶',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1002,7 +1002,7 @@ const GUAS = [
     },
     {
         'index': 56,
-        'symbol': '',
+        'symbol': '䷷',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1021,7 +1021,7 @@ const GUAS = [
 
     {
         'index': 57,
-        'symbol': '',
+        'symbol': '䷸',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1039,7 +1039,7 @@ const GUAS = [
     },
     {
         'index': 58,
-        'symbol': '',
+        'symbol': '䷹',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1057,7 +1057,7 @@ const GUAS = [
     },
     {
         'index': 59,
-        'symbol': '',
+        'symbol': '䷺',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1075,7 +1075,7 @@ const GUAS = [
     },
     {
         'index': 60,
-        'symbol': '',
+        'symbol': '䷻',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1093,7 +1093,7 @@ const GUAS = [
     },
     {
         'index': 61,
-        'symbol': '',
+        'symbol': '䷼',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1111,7 +1111,7 @@ const GUAS = [
     },
     {
         'index': 62,
-        'symbol': '',
+        'symbol': '䷽',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1129,7 +1129,7 @@ const GUAS = [
     },
     {
         'index': 63,
-        'symbol': '',
+        'symbol': '䷾',
         'shortName': '',
         'name': '',
         'struct': '',
@@ -1147,7 +1147,7 @@ const GUAS = [
     },
     {
         'index': 64,
-        'symbol': '',
+        'symbol': '䷿',
         'shortName': '',
         'name': '',
         'struct': '',

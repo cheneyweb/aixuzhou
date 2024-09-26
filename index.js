@@ -32,6 +32,7 @@ router.post('/', async (ctx) => {
             MsgType: 'text',
             Content: res
         }
+        console.log('长度', res.length)
     }
     console.timeEnd('用时')
 })
