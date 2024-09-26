@@ -272,7 +272,7 @@ function getRes(Content) {
     }
 
     const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos } = getSiHuas(life)
-    res += `===紫微斗数解盘: ${life.chineseDate}===`
+    res += `紫微斗数解盘:${life.chineseDate}`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} ${item[2]}`
@@ -329,7 +329,7 @@ function getRes(Content) {
     // console.log(sanHePos)
     // console.log(siZhengPos)
 
-    console.log(res)
+    // console.log(res)
 
     return res
 }
@@ -337,4 +337,4 @@ function getRes(Content) {
 module.exports = { getRes }
 
 // getRes('紫微 19980928 酉时 男')
-getRes('紫微 20020328 辰时 女')
+// getRes('紫微 20020328 辰时 女')
