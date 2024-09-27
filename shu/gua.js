@@ -15,18 +15,17 @@ function getRes(Content) {
     let res = ''
     let item = guaMap[Content] || guaShortMap[Content]
     if (item) {
-        res += `${item.name}(${item.shortName}卦 ${item.symbol})`
-        res += `\n[结构]${item.struct}`
-        res += `\n[卦题]${item.title}(${item.level})`
-        res += `\n[卦意]${item.imagery}`
-        res += `\n[卦辞]${item.guaci}`
-        res += `\n[推断]${item.tuiduan}`
-        res += `\n[大象]${item.daxiang}`
-        res += `\n[运势]${item.yunshi}`
-        res += `\n[爱情]${item.aiqing}`
-        res += `\n[疾病]${item.jibing}`
-        res += `\n[失物]${item.shiwu}`
-        res += `\n[诉讼]${item.susong}`
+        res += `${item.symbol} ${item.name} ${item.shortName}卦 ${item.title}•${item.level}`
+        res += `\n\n结构｜${item.struct}`
+        res += `\n\n卦意｜${item.imagery}`
+        res += `\n\n卦辞｜${item.guaci}`
+        res += `\n\n推断｜${item.tuiduan}`
+        res += `\n\n大象｜${item.daxiang}`
+        res += `\n\n运势｜${item.yunshi}`
+        res += `\n\n爱情｜${item.aiqing}`
+        res += `\n\n疾病｜${item.jibing}`
+        res += `\n\n失物｜${item.shiwu}`
+        res += `\n\n诉讼｜${item.susong}`
     }
     return res
 }
