@@ -3,6 +3,10 @@ const ziwei = require('../data/ziwei.js')
 
 function getSiHuas(life) {
     // const palaces = [life.palace(ziwei.GONGS[0]), life.palace(ziwei.GONGS[1]), life.palace(ziwei.GONGS[2]), life.palace(ziwei.GONGS[3]), life.palace(ziwei.GONGS[4]), life.palace(ziwei.GONGS[5]), life.palace(ziwei.GONGS[6]), life.palace(ziwei.GONGS[7]), life.palace(ziwei.GONGS[8]), life.palace(ziwei.GONGS[9]), life.palace(ziwei.GONGS[10]), life.palace(ziwei.GONGS[11])]
+
+    // 地支宫位索引MAP
+    const diZhiGongMap = {}
+
     // 生年四化 [宫,星,化]
     const shengNianSiHuas = []
     // 离心四化 [宫,星,化]
@@ -17,14 +21,15 @@ function getSiHuas(life) {
     const siZhengGongMap = {}
     // 宫位男女星 {宫:[[星,男/女]]}
     const gongNanNvMap = {}
-
-    // 地支宫位索引MAP
-    const diZhiGongMap = {}
-
-    // 三合破
+    // 三合破 [...生年四化, ...离心四化]
     const sanHePos = []
-    // 四正破
+    // 四正破 [...生年四化, ...离心四化]
     const siZhengPos = []
+    // 串联 {化:[离心四化/向心四化]}
+    const liXinChuanLianMap = {}
+    const xiangXinChuanLianMap = {}
+    // 反背 {化:{'离心':[离心四化],'向心':[向心四化]}}
+    const fanBeiMap = {}
 
     // 遍历三合宫位
     for (let sanhe of ziwei.SANHES) {
@@ -135,7 +140,60 @@ function getSiHuas(life) {
         }
     }
 
-    return { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos }
+    // 遍历离心四化
+    for (let liXinSiHua of liXinSiHuas) {
+        if (!liXinChuanLianMap[liXinSiHua[2]]) {
+            liXinChuanLianMap[liXinSiHua[2]] = []
+        }
+        liXinChuanLianMap[liXinSiHua[2]].push(liXinSiHua)
+        // 反背
+        if (!fanBeiMap[liXinSiHua[2]]) {
+            fanBeiMap[liXinSiHua[2]] = { '离心': [], '向心': [] }
+        }
+        fanBeiMap[liXinSiHua[2]]['离心'].push(liXinSiHua)
+        for (let xiangXinSiHua of xiangXinSiHuas) {
+            if (liXinSiHua[2] === xiangXinSiHua[3]) {
+                if (fanBeiMap[liXinSiHua[2]]['向心'].length === 0) {
+                    fanBeiMap[liXinSiHua[2]]['向心'].push(xiangXinSiHua)
+                } else {
+                    for (let item of fanBeiMap[liXinSiHua[2]]['向心']) {
+                        if (item[1] !== xiangXinSiHua[1]) {
+                            fanBeiMap[liXinSiHua[2]]['向心'].push(xiangXinSiHua)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 反背
+    for (let item in fanBeiMap) {
+        if (fanBeiMap[item]['向心'].length === 0) {
+            delete fanBeiMap[item]
+        }
+    }
+
+    // 离心串联
+    for (let item in liXinChuanLianMap) {
+        if (liXinChuanLianMap[item].length < 2) {
+            delete liXinChuanLianMap[item]
+        }
+    }
+
+    // 遍历向心四化
+    for (let xiangXinSiHua of xiangXinSiHuas) {
+        if (!xiangXinChuanLianMap[xiangXinSiHua[3]]) {
+            xiangXinChuanLianMap[xiangXinSiHua[3]] = []
+        }
+        xiangXinChuanLianMap[xiangXinSiHua[3]].push(xiangXinSiHua)
+    }
+    // 向心串联
+    for (let item in xiangXinChuanLianMap) {
+        if (xiangXinChuanLianMap[item].length < 2) {
+            delete xiangXinChuanLianMap[item]
+        }
+    }
+
+    return { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, fanBeiMap }
 }
 
 // // 生年四化 [宫,星,化]
@@ -270,8 +328,8 @@ function getRes(Content) {
         return res = '【输入格式错误】，格式如下：\n紫微 阳历年月日 时辰 性别\n\n【参考如下举例】\n紫微 19990821 申时 男'
     }
 
-    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos } = getSiHuas(life)
-    res += `紫微斗数解盘:${life.chineseDate}`
+    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, fanBeiMap } = getSiHuas(life)
+    res += `紫微解盘:${life.chineseDate} | ${sex === '男' ? '乾' : '坤'}`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} ${item[2]}`
@@ -296,7 +354,35 @@ function getRes(Content) {
     //     res += `\n`
     // }
 
-    res += `\n\n【三合破】`
+    res += `\n\n【串联】\n`
+    for (let item in liXinChuanLianMap) {
+        res += `${liXinChuanLianMap[item][0][2]} ↑ `
+        for (let arr of liXinChuanLianMap[item]) {
+            res += `${arr[0]} `
+        }
+        res += `\n`
+    }
+    for (let item in xiangXinChuanLianMap) {
+        res += `${xiangXinChuanLianMap[item][0][3]} → `
+        for (let arr of xiangXinChuanLianMap[item]) {
+            res += `${arr[1]} `
+        }
+    }
+
+    res += `\n\n【反背】\n`
+    for (let item in fanBeiMap) {
+        res += `${item} ↑ `
+        for (let arr of fanBeiMap[item]['离心']) {
+            res += `${arr[0]} `
+        }
+        res += `→ `
+        for (let arr of fanBeiMap[item]['向心']) {
+            res += `${arr[1]} `
+        }
+        res += `\n`
+    }
+
+    res += `\n【三合破】`
     for (let item of sanHePos) {
         // res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
         res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
@@ -327,8 +413,9 @@ function getRes(Content) {
     // console.log(gongNanNvMap)
     // console.log(sanHePos)
     // console.log(siZhengPos)
-
-    // console.log(res)
+    // console.log(liXinChuanLianMap)
+    // console.log(xiangXinChuanLianMap)
+    // console.log(JSON.stringify(fanBeiMap))
 
     return res
 }
