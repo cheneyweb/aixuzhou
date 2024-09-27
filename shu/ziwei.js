@@ -28,6 +28,8 @@ function getSiHuas(life) {
     // 串联 {化:[离心四化/向心四化]}
     const liXinChuanLianMap = {}
     const xiangXinChuanLianMap = {}
+    // 并联 {化化/化化化/化化化化:[宫,宫]}
+    const bingLianMap = {}
     // 反背 {化:{'离心':[离心四化],'向心':[向心四化]}}
     const fanBeiMap = {}
 
@@ -329,7 +331,10 @@ function getRes(Content) {
     }
 
     const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, fanBeiMap } = getSiHuas(life)
-    res += `紫微解盘:${life.chineseDate} ${life.gender === '男' ? '乾' : '坤'}`
+    res += `紫微解盘-${life.gender === '男' ? '乾' : '坤'}造`
+    res += `\n${life.chineseDate[0]} ${life.chineseDate[3]} ${life.chineseDate[6]} ${life.chineseDate[9]}`
+    res += `\n${life.chineseDate[1]} ${life.chineseDate[4]} ${life.chineseDate[7]} ${life.chineseDate[10]}`
+
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} ${item[2]}`
