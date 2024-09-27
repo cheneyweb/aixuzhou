@@ -363,14 +363,14 @@ function getRes(Content) {
     for (let item in liXinChuanLianMap) {
         res += `${liXinChuanLianMap[item][0][2]} ↑ `
         for (let arr of liXinChuanLianMap[item]) {
-            res += `${arr[0]}•${ziwei.NEIWAIGONGMAP[arr[0]]} `
+            res += `${arr[0]} `
         }
         res += `\n`
     }
     for (let item in xiangXinChuanLianMap) {
         res += `${xiangXinChuanLianMap[item][0][3]} → `
         for (let arr of xiangXinChuanLianMap[item]) {
-            res += `${arr[1]}•${ziwei.NEIWAIGONGMAP[arr[1]]} `
+            res += `${arr[1]} `
         }
     }
 
@@ -378,11 +378,11 @@ function getRes(Content) {
     for (let item in fanBeiMap) {
         res += `${item} ↑ `
         for (let arr of fanBeiMap[item]['离心']) {
-            res += `${arr[0]}•${ziwei.NEIWAIGONGMAP[arr[0]]} `
+            res += `${arr[0]} `
         }
         res += `→ `
         for (let arr of fanBeiMap[item]['向心']) {
-            res += `${arr[1]}•${ziwei.NEIWAIGONGMAP[arr[1]]} `
+            res += `${arr[1]} `
         }
         res += `\n`
     }
@@ -390,13 +390,13 @@ function getRes(Content) {
     res += `\n【三合破】`
     for (let item of sanHePos) {
         // res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
-        res += `\n${item[0]}•${ziwei.NEIWAIGONGMAP[item[0]]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
     }
 
     res += `\n\n【四正破】`
     for (let item of siZhengPos) {
         // res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
-        res += `\n${item[0]}•${ziwei.NEIWAIGONGMAP[item[0]]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
     }
 
     res += `\n\n【宫位男女】`
