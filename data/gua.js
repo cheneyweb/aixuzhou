@@ -1164,3 +1164,5 @@ const GUAS = [
         'susong': ''
     }
 ]
+
+module.exports = { GUAS }
