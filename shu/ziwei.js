@@ -390,13 +390,13 @@ function getRes(Content) {
     res += `\n【三合破】`
     for (let item of sanHePos) {
         // res += `\n${item}: ${sanHeGongMap[item][0]} ${sanHeGongMap[item][1]} ${sanHeGongMap[item][2]}`
-        res += `\n${item[0]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
 
     res += `\n\n【四正破】`
     for (let item of siZhengPos) {
         // res += `\n${item}: ${siZhengGongMap[item][0]} ${siZhengGongMap[item][1]} ${siZhengGongMap[item][2]} ${siZhengGongMap[item][3]}`
-        res += `\n${item[0]} ${item[1]} ↔ ${item[3]}•${ziwei.NEIWAIGONGMAP[item[3]]} ${item[4]} ${item[5]}`
+        res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
 
     res += `\n\n【宫位男女】`
