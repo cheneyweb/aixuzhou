@@ -1,6 +1,7 @@
 const SHICHENMAP = { '早子': 0, '子': 0, '丑': 1, '寅': 2, '卯': 3, '辰': 4, '巳': 5, '午': 6, '未': 7, '申': 8, '酉': 9, '戌': 10, '亥': 11, '晚子': 12 }
-
 const GONGS = ['命宫', '兄弟', '夫妻', '子女', '财帛', '疾厄', '迁移', '仆役', '官禄', '田宅', '福德', '父母']
+const NEIWAIGONGMAP = { '命宫': '内', '财帛': '内', '疾厄': '内', '官禄': '内', '田宅': '内', '福德': '内', '兄弟': '外', '夫妻': '外', '子女': '外', '迁移': '外', '仆役': '外', '父母': '外' }
+
 const LIUNEIGONGS = ['命宫', '财帛', '疾厄', '官禄', '田宅', '福德']
 const LIUWAIGONGS = ['兄弟', '夫妻', '子女', '迁移', '仆役', '父母']
 
@@ -64,4 +65,4 @@ const SIHUAMAP = {
     '癸': { '破军': '禄', '巨门': '权', '太阴': '科', '贪狼': '忌' }
 }
 
-module.exports = { SHICHENMAP, GONGS, DUIGONGMAP, SIHUAMAP, SANHES, SIZHENGS, HETUGONGZONGMAP1, HETUGONGZONGMAP2, NANXINGS, NVXINGS, SANHEMAP, SIZHENGMAP }
+module.exports = { SHICHENMAP, GONGS, NEIWAIGONGMAP, DUIGONGMAP, SIHUAMAP, SANHES, SIZHENGS, HETUGONGZONGMAP1, HETUGONGZONGMAP2, NANXINGS, NVXINGS, SANHEMAP, SIZHENGMAP }
