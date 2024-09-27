@@ -319,17 +319,17 @@ function getRes(Content) {
         const cmd = Content.split(/\s+/)
         const date = cmd[1]
         const time = cmd[2]
-        const sex = cmd[3]
+        const gender = cmd[3]
 
         const formattedDate = date.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')
         const formattedTime = ziwei.SHICHENMAP[time[0]]
-        life = astro.bySolar(formattedDate, formattedTime, sex)
+        life = astro.bySolar(formattedDate, formattedTime, gender)
     } catch (error) {
         return res = '【输入格式错误】，格式如下：\n紫微 阳历年月日 时辰 性别\n\n【参考如下举例】\n紫微 19990821 申时 男'
     }
 
     const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, fanBeiMap } = getSiHuas(life)
-    res += `紫微解盘:${life.chineseDate} | ${sex === '男' ? '乾' : '坤'}`
+    res += `紫微解盘:${life.chineseDate} ${life.gender === '男' ? '乾' : '坤'}`
     res += `\n\n【生年四化】`
     for (let item of shengNianSiHuas) {
         res += `\n${item[0]} ${item[1]} ${item[2]}`
