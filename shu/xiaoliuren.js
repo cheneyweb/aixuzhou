@@ -41,7 +41,7 @@ function getRes(Content) {
                 res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing}`
             }
 
-            res += `\n\n【大象运势】`
+            res += `\n\n【大象运势卦意】`
             res += `\n[${tian.name}] ${tian.title}；${tian.detail}\n`
             res += `\n[${di.name}] ${di.title}；${di.detail}\n`
             res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n`
@@ -57,7 +57,7 @@ function getRes(Content) {
                 res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.bagua}|${item.wuxing}`
             }
 
-            res += `\n\n【大象运势】`
+            res += `\n\n【大象运势卦意】`
             res += `\n[${tian.name}] ${tian.title}；${tian.detail}\n${tian.fangwei} ${tian.xing}\n`
             res += `\n[${di.name}] ${di.title}；${di.detail}\n${di.fangwei} ${di.xing}\n`
             res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n${ren.fangwei} ${ren.xing}\n`
