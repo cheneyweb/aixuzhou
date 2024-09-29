@@ -48,6 +48,7 @@ app.listen(process.env.PORT || 80, () => { console.log('STARTED', process.env.PO
 
 
 // console.log(SHUMAP['小六壬'].getRes('小六壬 456 75 15'))
+// console.log(SHUMAP['小六壬'].getRes('九宫小六壬 456 75 15'))
 // console.log(SHUMAP['紫微'].getRes('紫微 19990928 酉时 男'))
 // console.log(SHUMAP['紫微'].getRes('紫微 20020328 辰时 女'))
 // console.log(SHUMAP['卦'].getRes('乾为天'))

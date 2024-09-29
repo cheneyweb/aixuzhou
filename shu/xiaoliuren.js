@@ -34,9 +34,9 @@ function getRes(Content) {
 
             res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ○`
             res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ◐`
-            res += `\n世位 [${ren.name}] ${ren.liushou}|${ren.wuxing} ●`
+            res += `\n世位•人宫 [${ren.name}] ${ren.liushou}|${ren.wuxing} ●`
 
-            res += `\n\n【六亲八卦】`
+            res += `\n\n【六亲八卦十神】`
             for (let item of filters) {
                 res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing}`
             }
@@ -46,8 +46,18 @@ function getRes(Content) {
             res += `\n[${di.name}] ${di.title}；${di.detail}\n`
             res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n`
         } else if (cmd[0] === MENU_B) {
-            res += `${tian.name}(${tian.bagua}${tian.wuxing})->${di.name}(${di.bagua}${di.wuxing})->${ren.name}(${ren.bagua}${ren.wuxing})`
-            res += `\n`
+            const filters = xiaoliuren.JIUGONGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
+
+            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.bagua}|${tian.wuxing} ○`
+            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.bagua}|${di.wuxing} ◐`
+            res += `\n世位•人宫 [${ren.name}] ${ren.bagua}|${ren.wuxing} ●`
+
+            res += `\n\n【六亲八卦十神】`
+            for (let item of filters) {
+                res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.bagua}|${item.wuxing}`
+            }
+
+            res += `\n\n【大象运势】`
             res += `\n[${tian.name}] ${tian.title}；${tian.detail}\n${tian.fangwei} ${tian.xing}\n`
             res += `\n[${di.name}] ${di.title}；${di.detail}\n${di.fangwei} ${di.xing}\n`
             res += `\n[${ren.name}] ${ren.title}；${ren.detail}\n${ren.fangwei} ${ren.xing}\n`
