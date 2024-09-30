@@ -1,3 +1,109 @@
+const BAGUAS = [
+    {
+        'symbol': '☰',
+        'symbolName': '乾三连',
+        'name': '乾',
+        'guaxiang': '天',
+        'guaxu': '父',
+        'houtianguawei': '西北',
+        'houtianguashi': '立冬',
+        'guashu': '六',
+        'wuxing': '金',
+        'yinyang': '阳',
+        'najia': '乾金甲子外壬午'
+    },
+    {
+        'symbol': '☷',
+        'symbolName': '坤六断',
+        'name': '坤',
+        'guaxiang': '地',
+        'guaxu': '母',
+        'houtianguawei': '西南',
+        'houtianguashi': '立秋',
+        'guashu': '二',
+        'wuxing': '土',
+        'yinyang': '阴',
+        'najia': '坤土乙未外癸丑'
+    },
+    {
+        'symbol': '☳',
+        'symbolName': '震仰盂',
+        'name': '震',
+        'guaxiang': '雷',
+        'guaxu': '长男',
+        'houtianguawei': '东',
+        'houtianguashi': '春分',
+        'guashu': '三',
+        'wuxing': '木',
+        'yinyang': '阳',
+        'najia': '震木庚子外庚午'
+    },
+    {
+        'symbol': '☴',
+        'symbolName': '巽下断',
+        'name': '巽',
+        'guaxiang': '风',
+        'guaxu': '长女',
+        'houtianguawei': '东南',
+        'houtianguashi': '立夏',
+        'guashu': '四',
+        'wuxing': '木',
+        'yinyang': '阴',
+        'najia': '巽木辛丑外辛未'
+    }, {
+        'symbol': '☵',
+        'symbolName': '坎中满',
+        'name': '坎',
+        'guaxiang': '水',
+        'guaxu': '中男',
+        'houtianguawei': '北',
+        'houtianguashi': '冬至',
+        'guashu': '一',
+        'wuxing': '水',
+        'yinyang': '阳',
+        'najia': '坎水戊寅外戊申'
+    },
+    {
+        'symbol': '☲',
+        'symbolName': '离中虚',
+        'name': '离',
+        'guaxiang': '火',
+        'guaxu': '中女',
+        'houtianguawei': '南',
+        'houtianguashi': '夏至',
+        'guashu': '九',
+        'wuxing': '火',
+        'yinyang': '阴',
+        'najia': '离火己卯外己酉'
+    },
+    {
+        'symbol': '☶',
+        'symbolName': '艮覆碗',
+        'name': '艮',
+        'guaxiang': '山',
+        'guaxu': '少男',
+        'houtianguawei': '东北',
+        'houtianguashi': '立春',
+        'guashu': '八',
+        'wuxing': '土',
+        'yinyang': '阳',
+        'najia': '艮土丙辰外丙戌'
+    },
+    {
+        'symbol': '☱',
+        'symbolName': '兑上缺',
+        'name': '兑',
+        'guaxiang': '泽',
+        'guaxu': '少女',
+        'houtianguawei': '西',
+        'houtianguashi': '秋分',
+        'guashu': '七',
+        'wuxing': '金',
+        'yinyang': '阴',
+        'najia': '兑金丁巳外丁亥'
+    }
+]
+
 const GUAS = [
     {
         'index': 1,
@@ -154,7 +260,7 @@ const GUAS = [
         'symbol': '䷈',
         'shortName': '小畜',
         'name': '风天小畜',
-        'struct': '巽上乾下,',
+        'struct': '巽上乾下,木上金下,阴上阳下,长女上父下,东南上金下',
         'title': '密云不雨',
         'level': '下平卦',
         'imagery': '蓄养实力之意,密云无雨之象',
@@ -172,7 +278,7 @@ const GUAS = [
         'symbol': '䷉',
         'shortName': '履',
         'name': '天泽履',
-        'struct': '乾上兑下,',
+        'struct': '乾上兑下,金上金下,阳上阴下,父上少女下,西北上西下',
         'title': '俊鸟出笼',
         'level': '中吉卦',
         'imagery': '险中求胜之意,如履虎尾之象',
@@ -190,7 +296,7 @@ const GUAS = [
         'symbol': '䷊',
         'shortName': '泰',
         'name': '地天泰',
-        'struct': '坤上乾下,',
+        'struct': '坤上乾下,土上金下,阴上阳下,母上父下,西南上西北下',
         'title': '喜报三元',
         'level': '上吉卦',
         'imagery': '上下和睦之意,事事通泰之象',
@@ -208,7 +314,7 @@ const GUAS = [
         'symbol': '䷋',
         'shortName': '否',
         'name': '天地否',
-        'struct': '坤上乾下,',
+        'struct': '坤上乾下,土上金下,阴上阳下,母上父下,西南上西北下',
         'title': '虎落陷坑',
         'level': '下平卦',
         'imagery': '上下不合之意,闭塞不通之象',
@@ -226,7 +332,7 @@ const GUAS = [
         'symbol': '䷌',
         'shortName': '同人',
         'name': '天火同人',
-        'struct': '乾上离下,',
+        'struct': '乾上离下,金上火下,阳上阴下,父上中女下,西北上南下',
         'title': '仙人指路',
         'level': '中吉卦',
         'imagery': '合作共事之意,二人同心之象',
@@ -244,7 +350,7 @@ const GUAS = [
         'symbol': '䷍',
         'shortName': '大有',
         'name': '火天大有',
-        'struct': '离上乾下,',
+        'struct': '离上乾下,火上金下,阴上阳下,中女上父下,南上西北下',
         'title': '砍树摸雀',
         'level': '上中卦',
         'imagery': '好景不长之意,日历中天之象',
@@ -262,7 +368,7 @@ const GUAS = [
         'symbol': '䷎',
         'shortName': '谦',
         'name': '地山谦',
-        'struct': '坤上艮下,',
+        'struct': '坤上艮下,土上土下,阴上阳下,母上少男下,西南上东北下',
         'title': '二人分金',
         'level': '上平卦',
         'imagery': '虚怀处世之意,空谷藏玉之象',
@@ -280,7 +386,7 @@ const GUAS = [
         'symbol': '䷏',
         'shortName': '豫',
         'name': '雷地豫',
-        'struct': '震上坤下,',
+        'struct': '震上坤下,木上土下,阳上阴下,长男上母下,东上西南下',
         'title': '青龙得应',
         'level': '上中卦',
         'imagery': '事见生机之意,雷奋大地之象',
@@ -299,7 +405,7 @@ const GUAS = [
         'symbol': '䷐',
         'shortName': '随',
         'name': '泽雷随',
-        'struct': '兑上震下,',
+        'struct': '兑上震下,金上木下,阴上阳下,少女上长男下,西上东下',
         'title': '推车靠岸',
         'level': '下吉卦',
         'imagery': '随遇而安之意,乘马逐鹿之象',
@@ -317,7 +423,7 @@ const GUAS = [
         'symbol': '䷑',
         'shortName': '蛊',
         'name': '山风蛊',
-        'struct': '艮上巽下,',
+        'struct': '艮上巽下,土上木下,阳上阴下,少男上长女下,东北上东南下',
         'title': '推磨岔道',
         'level': '下吉卦',
         'imagery': '不进则退之意,物腐虫生之象',
@@ -335,7 +441,7 @@ const GUAS = [
         'symbol': '䷒',
         'shortName': '临',
         'name': '地泽临',
-        'struct': '坤上兑下,',
+        'struct': '坤上兑下,土上金下,阴上阴下,母上少女下,西南上西下',
         'title': '发政施仁',
         'level': '上平卦',
         'imagery': '循序渐进之意,少女从母之象',
@@ -353,7 +459,7 @@ const GUAS = [
         'symbol': '䷓',
         'shortName': '观',
         'name': '风地观',
-        'struct': '巽上坤下,',
+        'struct': '巽上坤下,木上土下,阴上阴下,长女上母下,东南上西南下',
         'title': '鹊鹤同林',
         'level': '下中卦',
         'imagery': '观察入微之意,风扬尘埃之象',
@@ -371,7 +477,7 @@ const GUAS = [
         'symbol': '䷔',
         'shortName': '噬磕',
         'name': '火雷噬嗑',
-        'struct': '离上震下,',
+        'struct': '离上震下,火上木下,阴上阳下,中女上长男下,南上东下',
         'title': '饥人遇食',
         'level': '中平卦',
         'imagery': '夫妻怨怒之意,喉中有物之象',
@@ -389,7 +495,7 @@ const GUAS = [
         'symbol': '䷕',
         'shortName': '贲',
         'name': '山火贲',
-        'struct': '艮上离下,',
+        'struct': '艮上离下,土上火下,阳上阴下,少男上中女下,东北上南下',
         'title': '喜气迎门',
         'level': '中上卦',
         'imagery': '粉饰妆粉之意,争妍斗丽之象',
@@ -407,7 +513,7 @@ const GUAS = [
         'symbol': '䷖',
         'shortName': '剥',
         'name': '山地剥',
-        'struct': '艮上坤下,',
+        'struct': '艮上坤下,土上土下,阳上阴下,少男上母下,东北上西南下',
         'title': '旱莲逢河',
         'level': '上吉卦',
         'imagery': '去旧生新之意,群阴剥阳之象',
@@ -425,7 +531,7 @@ const GUAS = [
         'symbol': '䷗',
         'shortName': '复',
         'name': '地雷复',
-        'struct': '坤上震下,',
+        'struct': '坤上震下,土上木下,阴上阳下,母上长男下,西南上东下',
         'title': '夫妻反目',
         'level': '中下卦',
         'imagery': '重修破旧之意,万物更新之象',
@@ -444,7 +550,7 @@ const GUAS = [
         'symbol': '䷘',
         'shortName': '无妄',
         'name': '天雷无妄',
-        'struct': '乾上震下,',
+        'struct': '乾上震下,金上木下,阳上阳下,父上长男下,西北上东下',
         'title': '鸟困牢笼',
         'level': '中下卦',
         'imagery': '守旧常安之意,石中蕴玉之象',
@@ -462,7 +568,7 @@ const GUAS = [
         'symbol': '䷙',
         'shortName': '大畜',
         'name': '山天大畜',
-        'struct': '艮上乾下,',
+        'struct': '艮上乾下,土上金下,阳上阳下,少男上父下,东北上西北下',
         'title': '阵势得开',
         'level': '中吉卦',
         'imagery': '积小成大之意,潜水行舟之象',
@@ -480,7 +586,7 @@ const GUAS = [
         'symbol': '䷚',
         'shortName': '颐',
         'name': '山雷颐',
-        'struct': '艮上震下,',
+        'struct': '艮上震下,土上木下,阳上阳下,少男上长男下,东北上东下',
         'title': '渭水访贤',
         'level': '上吉卦',
         'imagery': '审慎交往之意,匣中藏剑之象',
@@ -498,7 +604,7 @@ const GUAS = [
         'symbol': '䷛',
         'shortName': '大过',
         'name': '泽风大过',
-        'struct': '兑上巽下,',
+        'struct': '兑上巽下,金上木下,阴上阴下,少女上长女下,西上东南下',
         'title': '夜梦金银',
         'level': '下下卦',
         'imagery': '反省过失之意,枯木生花之象',
@@ -516,7 +622,7 @@ const GUAS = [
         'symbol': '䷜',
         'shortName': '坎',
         'name': '坎为水',
-        'struct': '坎上坎下,',
+        'struct': '坎上坎下,水上水下,阳上阳下,中男上中男下,北上北下',
         'title': '水底捞月',
         'level': '下下卦',
         'imagery': '向下内敛之意,重重险陷之象',
@@ -534,7 +640,7 @@ const GUAS = [
         'symbol': '䷝',
         'shortName': '离',
         'name': '离为火',
-        'struct': '离上离下,',
+        'struct': '离上离下,火上火下,阴上阴下,中女上中女下,南上南下',
         'title': '天官赐福',
         'level': '上上卦',
         'imagery': '光明远大之意,丽日当天之象',
@@ -552,7 +658,7 @@ const GUAS = [
         'symbol': '䷞',
         'shortName': '咸',
         'name': '泽山咸',
-        'struct': '兑上艮下,',
+        'struct': '兑上艮下,金上土下,阴上阳下,少女上少男下,西上东北下',
         'title': '萌芽出土',
         'level': '平平卦',
         'imagery': '往来无阻之意,山泽通气之象',
@@ -570,7 +676,7 @@ const GUAS = [
         'symbol': '䷟',
         'shortName': '恒',
         'name': '雷风恒',
-        'struct': '震上巽下,',
+        'struct': '震上巽下,木上木下,阳上阴下,长男上长女下,东上东南下',
         'title': '鱼来掩网',
         'level': '上平卦',
         'imagery': '努力不懈之意,相对并行之象',
@@ -589,7 +695,7 @@ const GUAS = [
         'symbol': '䷠',
         'shortName': '遁',
         'name': '天山遁',
-        'struct': '乾上艮下,',
+        'struct': '乾上艮下,金上土下,阳上阳下,父上少男下,西北上东北下',
         'title': '浓云蔽日',
         'level': '中平卦',
         'imagery': '掘井无泉之意,守旧去恶之象',
@@ -607,7 +713,7 @@ const GUAS = [
         'symbol': '䷡',
         'shortName': '大壮',
         'name': '雷天大壮',
-        'struct': '震上乾下,',
+        'struct': '震上乾下,木上金下,阳上阳下,长男上父下,东上西北下',
         'title': '工师得木',
         'level': '上平卦',
         'imagery': '声威壮大之意,猛处生角之象',
@@ -625,7 +731,7 @@ const GUAS = [
         'symbol': '䷢',
         'shortName': '晋',
         'name': '火地晋',
-        'struct': '离上坤下,',
+        'struct': '离上坤下,火上土下,阴上阴下,中女上母下,南上西南下',
         'title': '锄地得金',
         'level': '上平卦',
         'imagery': '良臣遇君之意,满地锦绣之象',
@@ -643,7 +749,7 @@ const GUAS = [
         'symbol': '䷣',
         'shortName': '明夷',
         'name': '地火明夷',
-        'struct': '坤上离下,',
+        'struct': '坤上离下,土上火下,阴上阴下,母上中女下,西南上南下',
         'title': '过河拆桥',
         'level': '下平卦',
         'imagery': '弃明投暗之意,凤凰垂意之象',
@@ -661,7 +767,7 @@ const GUAS = [
         'symbol': '䷤',
         'shortName': '家人',
         'name': '风火家人',
-        'struct': '巽上离下,',
+        'struct': '巽上离下,木上火下,阴上阴下,长女上中女下,东南上南下',
         'title': '镜里观花',
         'level': '下下卦',
         'imagery': '开花结果之意,入海求珠之象',
@@ -679,7 +785,7 @@ const GUAS = [
         'symbol': '䷥',
         'shortName': '睽',
         'name': '火泽睽',
-        'struct': '离上兑下,',
+        'struct': '离上兑下,火上金下,阴上阴下,中女上少女下,南上西下',
         'title': '行走薄冰',
         'level': '下平卦',
         'imagery': '阴阳失调之意,二女同居之象',
@@ -697,7 +803,7 @@ const GUAS = [
         'symbol': '䷦',
         'shortName': '蹇',
         'name': '水山蹇',
-        'struct': '坎上艮下,',
+        'struct': '坎上艮下,水上土下,阳上阳下,中男上少男下,北上东北下',
         'title': '雨雪载途',
         'level': '下下卦',
         'imagery': '背明向暗之意,门前有陷之象',
@@ -715,7 +821,7 @@ const GUAS = [
         'symbol': '䷧',
         'shortName': '解',
         'name': '雷水解',
-        'struct': '震上坎下,',
+        'struct': '震上坎下,木上水下,阳上阳下,长男上中男下,东上北下',
         'title': '五关脱难',
         'level': '中吉卦',
         'imagery': '遇困可解之意,草木舒展之象',
@@ -734,7 +840,7 @@ const GUAS = [
         'symbol': '䷨',
         'shortName': '损',
         'name': '山泽损',
-        'struct': '艮上兑下,',
+        'struct': '艮上兑下,土上金下,阳上阴下,少男上少女下,东北上西下',
         'title': '推车掉耳',
         'level': '下中卦',
         'imagery': '以德报怨之意,山高水深之象',
@@ -752,7 +858,7 @@ const GUAS = [
         'symbol': '䷩',
         'shortName': '益',
         'name': '风雷益',
-        'struct': '巽上震下,',
+        'struct': '巽上震下,木上木下,阴上阳下,长女上长男下,东南上东下',
         'title': '枯木开花',
         'level': '中吉卦',
         'imagery': '损上益下之意,风雷交错之象',
@@ -770,7 +876,7 @@ const GUAS = [
         'symbol': '䷪',
         'shortName': '夬',
         'name': '泽天夬',
-        'struct': '兑上乾下,',
+        'struct': '兑上乾下,金上金下,阴上阳下,少女上父下,西上西北下',
         'title': '游蜂脱网',
         'level': '中吉卦',
         'imagery': '亏中有益之意,蛟龙登天之象',
@@ -788,7 +894,7 @@ const GUAS = [
         'symbol': '䷫',
         'shortName': '姤',
         'name': '天风姤',
-        'struct': '乾上巽下,',
+        'struct': '乾上巽下,金上木下,阳上阴下,父上长女下,西北上东南下',
         'title': '他乡遇友',
         'level': '上平卦',
         'imagery': '聚散随缘之意,风云际会之象',
@@ -806,7 +912,7 @@ const GUAS = [
         'symbol': '䷬',
         'shortName': '萃',
         'name': '泽地萃',
-        'struct': '兑上坤下,',
+        'struct': '兑上坤下,金上土下,阴上阴下,少女上母下,西上西南下',
         'title': '鲤鱼化龙',
         'level': '中吉卦',
         'imagery': '精英荟萃之意,鲤登龙门之象',
@@ -824,7 +930,7 @@ const GUAS = [
         'symbol': '䷭',
         'shortName': '升',
         'name': '地风升',
-        'struct': '坤上巽下,',
+        'struct': '坤上巽下,土上木下,阴上阴下,母上长女下,西南上东南下',
         'title': '指日高升',
         'level': '上吉卦',
         'imagery': '拼搏得益之意,积小成大之象',
@@ -842,7 +948,7 @@ const GUAS = [
         'symbol': '䷮',
         'shortName': '困',
         'name': '泽水困',
-        'struct': '兑上坎下,',
+        'struct': '兑上坎下,金上水下,阴上阳下,少女上中男下,西上北下',
         'title': '撮杆抽梯',
         'level': '下平卦',
         'imagery': '守正待机之意,河中无水之象',
@@ -860,7 +966,7 @@ const GUAS = [
         'symbol': '䷯',
         'shortName': '井',
         'name': '水风井',
-        'struct': '坎上巽下,',
+        'struct': '坎上巽下,水上木下,阳上阴下,中男上长女下,北上东南下',
         'title': '枯井生泉',
         'level': '上中卦',
         'imagery': '井井有条之意,珠藏深渊之象',
@@ -879,7 +985,7 @@ const GUAS = [
         'symbol': '䷰',
         'shortName': '革',
         'name': '泽火革',
-        'struct': '兑上离下,',
+        'struct': '兑上离下,金上火下,阴上阴下,少女上中女下,西上南下',
         'title': '毕曲得雨',
         'level': '上平卦',
         'imagery': '改旧纳新之意,豹变为虎之象',
@@ -897,7 +1003,7 @@ const GUAS = [
         'symbol': '䷱',
         'shortName': '鼎',
         'name': '火风鼎',
-        'struct': '离上巽下,',
+        'struct': '离上巽下,火上木下,阴上阴下,中女上长女下,南上东南下',
         'title': '渔人得利',
         'level': '上中卦',
         'imagery': '去故取新之意,鼎器烹调之象',
@@ -915,7 +1021,7 @@ const GUAS = [
         'symbol': '䷲',
         'shortName': '震',
         'name': '震为雷',
-        'struct': '震上震下,',
+        'struct': '震上震下,木上木下,阳上阳下,长男上长男下,东上东下',
         'title': '金钟夜掸',
         'level': '中吉卦',
         'imagery': '惊恐不屈之意,雷惊百里之象',
@@ -933,7 +1039,7 @@ const GUAS = [
         'symbol': '䷳',
         'shortName': '艮',
         'name': '艮为山',
-        'struct': '艮上艮下,',
+        'struct': '艮上艮下,土上土下,阳上阳下,少男上少男下,东北上东北下',
         'title': '矬巴勾枣',
         'level': '下中卦',
         'imagery': '步步为营之意,重山关锁之象',
@@ -951,7 +1057,7 @@ const GUAS = [
         'symbol': '䷴',
         'shortName': '渐',
         'name': '风山渐',
-        'struct': '巽上艮下,',
+        'struct': '巽上艮下,木上土下,阴上阳下,长女上少男下,东南上东北下',
         'title': '凤鸣岐山',
         'level': '上上卦',
         'imagery': '积小成多之意,草木渐茂之象',
@@ -969,7 +1075,7 @@ const GUAS = [
         'symbol': '䷵',
         'shortName': '归妹',
         'name': '雷泽归妹',
-        'struct': '震上兑下,',
+        'struct': '震上兑下,木上金下,阳上阴下,长男上少女下,东上西下',
         'title': '缘木求鱼',
         'level': '下平卦',
         'imagery': '错失端正之意,少女追男之象',
@@ -987,7 +1093,7 @@ const GUAS = [
         'symbol': '䷶',
         'shortName': '丰',
         'name': '雷火丰',
-        'struct': '震上离下,',
+        'struct': '震上离下,木上火下,阳上阴下,长男上中女下,东上南下',
         'title': '古镜重明',
         'level': '中吉卦',
         'imagery': '弃暗投明之意,光明普照之象',
@@ -1005,7 +1111,7 @@ const GUAS = [
         'symbol': '䷷',
         'shortName': '旅',
         'name': '火山旅',
-        'struct': '离上艮下,',
+        'struct': '离上艮下,火上土下,阴上阳下,中女上少男下,南上东北下',
         'title': '宿鸟焚巢',
         'level': '下下卦',
         'imagery': '乐极生悲之意,鸟焚其巢之象',
@@ -1024,7 +1130,7 @@ const GUAS = [
         'symbol': '䷸',
         'shortName': '巽',
         'name': '巽为风',
-        'struct': '巽上巽下,',
+        'struct': '巽上巽下,木上木下,阴上阴下,长女上长女下,东南上东南下',
         'title': '孤舟得木',
         'level': '中吉卦',
         'imagery': '上行下效之意,飓风覆船之象',
@@ -1042,7 +1148,7 @@ const GUAS = [
         'symbol': '䷹',
         'shortName': '兑',
         'name': '兑为泽',
-        'struct': '兑上兑下,',
+        'struct': '兑上兑下,金上金下,阴上阴下,少女上少女下,西上西下',
         'title': '趁水和泥',
         'level': '中吉卦',
         'imagery': '有誉有讥之意,天降雨泽之象',
@@ -1060,7 +1166,7 @@ const GUAS = [
         'symbol': '䷺',
         'shortName': '涣',
         'name': '风水涣',
-        'struct': '巽上坎下,',
+        'struct': '巽上坎下,木上水下,阴上阳下,长女上中男下,东南上北下',
         'title': '隔河望金',
         'level': '下下卦',
         'imagery': '随波逐流之意,顺风杨帆之象',
@@ -1078,7 +1184,7 @@ const GUAS = [
         'symbol': '䷻',
         'shortName': '节',
         'name': '水泽节',
-        'struct': '坎上兑下,',
+        'struct': '坎上兑下,水上金下,阳上阴下,中男上少女下,北上西下',
         'title': '斩将封神',
         'level': '上吉卦',
         'imagery': '勤俭克己之意,蓄水成塘之象',
@@ -1096,7 +1202,7 @@ const GUAS = [
         'symbol': '䷼',
         'shortName': '中孚',
         'name': '风泽中孚',
-        'struct': '巽上兑下,',
+        'struct': '巽上兑下,木上金下,阴上阴下,长女上少女下,东南上西下',
         'title': '贩卖猪羊',
         'level': '下下卦',
         'imagery': '以诚待人之意,鹤鸣子和之象',
@@ -1114,7 +1220,7 @@ const GUAS = [
         'symbol': '䷽',
         'shortName': '小过',
         'name': '雷山小过',
-        'struct': '震上艮下,',
+        'struct': '震上艮下,木上土下,阳上阳下,长男上少男下,东上东北下',
         'title': '急过独桥',
         'level': '中平卦',
         'imagery': '阳奉阴违之意,飞鸟遗音之象',
@@ -1132,7 +1238,7 @@ const GUAS = [
         'symbol': '䷾',
         'shortName': '既济',
         'name': '水火既济',
-        'struct': '坎上离下,',
+        'struct': '坎上离下,水上火下,阳上阴下,中男上中女下,北上南下',
         'title': '金榜提名',
         'level': '上中卦',
         'imagery': '上下相通之意,阴阳和谐之象',
@@ -1150,7 +1256,7 @@ const GUAS = [
         'symbol': '䷿',
         'shortName': '未济',
         'name': '火水未济',
-        'struct': '离上坎下,',
+        'struct': '离上坎下,火上水下,阴上阳下,中女上中男下,南上北下',
         'title': '太岁月健',
         'level': '中平卦',
         'imagery': '上下不通之意,阴阳失调之象',
@@ -1167,48 +1273,58 @@ const GUAS = [
 
 module.exports = { GUAS }
 
+// const baGuaMap = {}
+// for (let bagua of BAGUAS) {
+//     baGuaMap[bagua.name] = bagua
+// }
 
+// for (let gua of GUAS) {
+//     const shang = baGuaMap[gua.struct[0]]
+//     const xia = baGuaMap[gua.struct[2]]
+//     console.log(gua.name)
+//     console.log(`${shang.name}上${xia.name}下,${shang.wuxing}上${xia.wuxing}下,${shang.yinyang}上${xia.yinyang}下,${shang.guaxu}上${xia.guaxu}下,${shang.houtianguawei}上${xia.houtianguawei}下`)
+// }
 
-function extractContent(content, keys) {
-    const keyMap = {
-        '卦辞': 'guaci', '推断': 'tuiduan', '大象': 'daxiang', '运势': 'yunshi', '事业': 'shiye', '经商': 'jingshang', '求名': 'qiuming', '婚恋': 'hunlian', '决策': 'juece', '仕途': 'shitu',
-        '卦解': 'guajie', '特性': 'texing', '运势': 'yunshi', '时运': 'shiyun', '财运': 'caiyun', '家运': 'jiayun', '家宅': 'jiazhai', '身体': 'shenti', '疾病': 'jibing', '胎孕': 'taiyun', '子女': 'zinv', '周转': 'zhouzhuan', '买卖': 'maimai', '等人': 'dengren', '寻人': 'xunren', '失物': 'shiwu', '外出': 'waichu', '考试': 'kaoshi', '诉讼': 'susong', '求事': 'qiushi', '改行': 'gaihang', '开业': 'kaiye', '爱情': 'aiqing', '婚姻': 'hunyin', '交友': 'jiaoyou', '饮食': 'yinshi'
-    }
-    const map = {}
-    for (let key of keys) {
-        try {
-            const match = content.match(new RegExp(`${key}.*：(.*?)<br \/>`))
-            map[keyMap[key]] = match[1].substring(0, match[1].lastIndexOf('。')).replaceAll('，', ',').replaceAll('。', '.')
-        } catch (error) {
-            console.error(key, '空缺')
-        }
-    }
-    return map
-}
-async function extract() {
-    for (let i = 123; i < 200; i++) {
-        const res = await fetch(`http://m-zy.kvov.com/sswzx.php?id=5323333666655555${i}`)
-        const content = await res.text()
-        const match = content.match(new RegExp(`<title>(.*?)<\/title>`))
-        if (!match[1].includes('占卦')) {
-            continue
-        }
-        console.log(match[1])
-        // console.log(content)
-        const chuantong = extractContent(content, ['卦辞', '推断', '大象', '运势', '事业', '经商', '求名', '婚恋', '决策', '仕途'])
-        const dashi = extractContent(content, ['卦解', '特性', '运势', '时运', '财运', '家运', '家宅', '身体', '疾病', '胎孕', '子女', '周转', '买卖', '等人', '寻人', '失物', '外出', '考试', '诉讼', '求事', '改行', '开业', '爱情', '婚姻', '交友', '饮食'])
-        // console.log(chuantong)
-        // console.log(dashi)
-        console.log(JSON.stringify({
-            'guaci': chuantong.guaci,
-            'tuiduan': chuantong.tuiduan,
-            'daxiang': chuantong.daxiang,
-            'yunshi': chuantong.yunshi,
-            'aiqing': dashi.aiqing,
-            'jibing': dashi.jibing,
-            'shiwu': dashi.shiwu,
-            'susong': dashi.susong
-        }, null, 2).replaceAll('"', '\''))
-    }
-}
+// function extractContent(content, keys) {
+//     const keyMap = {
+//         '卦辞': 'guaci', '推断': 'tuiduan', '大象': 'daxiang', '运势': 'yunshi', '事业': 'shiye', '经商': 'jingshang', '求名': 'qiuming', '婚恋': 'hunlian', '决策': 'juece', '仕途': 'shitu',
+//         '卦解': 'guajie', '特性': 'texing', '运势': 'yunshi', '时运': 'shiyun', '财运': 'caiyun', '家运': 'jiayun', '家宅': 'jiazhai', '身体': 'shenti', '疾病': 'jibing', '胎孕': 'taiyun', '子女': 'zinv', '周转': 'zhouzhuan', '买卖': 'maimai', '等人': 'dengren', '寻人': 'xunren', '失物': 'shiwu', '外出': 'waichu', '考试': 'kaoshi', '诉讼': 'susong', '求事': 'qiushi', '改行': 'gaihang', '开业': 'kaiye', '爱情': 'aiqing', '婚姻': 'hunyin', '交友': 'jiaoyou', '饮食': 'yinshi'
+//     }
+//     const map = {}
+//     for (let key of keys) {
+//         try {
+//             const match = content.match(new RegExp(`${key}.*：(.*?)<br \/>`))
+//             map[keyMap[key]] = match[1].substring(0, match[1].lastIndexOf('。')).replaceAll('，', ',').replaceAll('。', '.')
+//         } catch (error) {
+//             console.error(key, '空缺')
+//         }
+//     }
+//     return map
+// }
+// async function extract() {
+//     for (let i = 123; i < 200; i++) {
+//         const res = await fetch(`http://m-zy.kvov.com/sswzx.php?id=5323333666655555${i}`)
+//         const content = await res.text()
+//         const match = content.match(new RegExp(`<title>(.*?)<\/title>`))
+//         if (!match[1].includes('占卦')) {
+//             continue
+//         }
+//         console.log(match[1])
+//         // console.log(content)
+//         const chuantong = extractContent(content, ['卦辞', '推断', '大象', '运势', '事业', '经商', '求名', '婚恋', '决策', '仕途'])
+//         const dashi = extractContent(content, ['卦解', '特性', '运势', '时运', '财运', '家运', '家宅', '身体', '疾病', '胎孕', '子女', '周转', '买卖', '等人', '寻人', '失物', '外出', '考试', '诉讼', '求事', '改行', '开业', '爱情', '婚姻', '交友', '饮食'])
+//         // console.log(chuantong)
+//         // console.log(dashi)
+//         console.log(JSON.stringify({
+//             'guaci': chuantong.guaci,
+//             'tuiduan': chuantong.tuiduan,
+//             'daxiang': chuantong.daxiang,
+//             'yunshi': chuantong.yunshi,
+//             'aiqing': dashi.aiqing,
+//             'jibing': dashi.jibing,
+//             'shiwu': dashi.shiwu,
+//             'susong': dashi.susong
+//         }, null, 2).replaceAll('"', '\''))
+//     }
+// }
 // extract()
