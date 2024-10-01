@@ -28,8 +28,10 @@ function getSiHuas(life) {
     // 串联 {化:[离心四化/向心四化]}
     const liXinChuanLianMap = {}
     const xiangXinChuanLianMap = {}
-    // 并联 {}
-    const bingLianMap = { shengnianshuangxiang: {}, shengniandanxiangzihua: {}, chuanbing: {}, dangongshuangxiang: {} }
+    // 并联 {shengnianshuangxiang:{宫:[宫,星,化]},chuanbing:{}}
+    const bingLianMap = { shengnianshuangxiang: {}, chuanbing: {}, dangongshuangxiang: {} }
+    // 质量变 {宫:{shengnian:[],lixin:[],xiangxin:[]}}
+    const zhiLiangBianMap = {}
     // 反背 {化:{'离心':[离心四化],'向心':[向心四化]}}
     const fanBeiMap = {}
 
@@ -146,6 +148,24 @@ function getSiHuas(life) {
                 siZhengPos.push([...shengNianSiHua, ...liXinSiHua])
             }
         }
+        // 质量变
+        if (!zhiLiangBianMap[shengNianSiHua[0]]) {
+            zhiLiangBianMap[shengNianSiHua[0]] = { shengnian: [], lixin: [], xiangxin: [] }
+        }
+        zhiLiangBianMap[shengNianSiHua[0]].shengnian.push(shengNianSiHua)
+        for (let liXinSiHua of liXinSiHuas) {
+            if (shengNianSiHua[0] === liXinSiHua[0] && shengNianSiHua[2] !== liXinSiHua[2]) {
+                zhiLiangBianMap[shengNianSiHua[0]].lixin.push(liXinSiHua)
+            }
+        }
+        for (let xiangXinSiHua of xiangXinSiHuas) {
+            if (shengNianSiHua[0] === xiangXinSiHua[1] && shengNianSiHua[2] !== xiangXinSiHua[3]) {
+                zhiLiangBianMap[shengNianSiHua[0]].xiangxin.push(xiangXinSiHua)
+            }
+        }
+        if (zhiLiangBianMap[shengNianSiHua[0]].lixin.length === 0 && zhiLiangBianMap[shengNianSiHua[0]].xiangxin.length === 0) {
+            delete zhiLiangBianMap[shengNianSiHua[0]]
+        }
     }
 
     // 遍历离心四化
@@ -223,6 +243,7 @@ function getSiHuas(life) {
         siZhengPos,
         liXinChuanLianMap,
         xiangXinChuanLianMap,
+        zhiLiangBianMap,
         fanBeiMap,
         bingLianMap
     }
@@ -244,7 +265,7 @@ function getRes(Content) {
         return res = '【输入格式错误】，格式如下：\n紫微 阳历年月日 时辰 性别\n\n【参考如下举例】\n紫微 19990821 申时 男'
     }
 
-    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, fanBeiMap, bingLianMap } = getSiHuas(life)
+    const { shengNianSiHuas, liXinSiHuas, xiangXinSiHuas, feiGongSiHuaMap, sanHeGongMap, siZhengGongMap, gongNanNvMap, sanHePos, siZhengPos, liXinChuanLianMap, xiangXinChuanLianMap, zhiLiangBianMap, fanBeiMap, bingLianMap } = getSiHuas(life)
     res += `紫微解盘-${life.gender === '男' ? '乾' : '坤'}造`
     res += `\n${life.chineseDate[0]} ${life.chineseDate[3]} ${life.chineseDate[6]} ${life.chineseDate[9]}`
     res += `\n${life.chineseDate[1]} ${life.chineseDate[4]} ${life.chineseDate[7]} ${life.chineseDate[10]}`
@@ -348,6 +369,7 @@ function getRes(Content) {
     // console.log(liXinChuanLianMap)
     // console.log(xiangXinChuanLianMap)
     // console.log(JSON.stringify(fanBeiMap))
+    // console.log(JSON.stringify(zhiLiangBianMap, null, 2))
     // console.log(bingLianMap.shengnianshuangxiang)
 
     return res
