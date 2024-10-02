@@ -28,8 +28,8 @@ function getSiHuas(life) {
     // 串联 {化:[离心四化/向心四化]}
     const liXinChuanLianMap = {}
     const xiangXinChuanLianMap = {}
-    // 并联 {shengnianshuangxiang:{宫:[宫,星,化]},chuanbing:{}}
-    const bingLianMap = { shengnianshuangxiang: {}, chuanbing: {}, dangongshuangxiang: {} }
+    // 并联 {shengnianshuangxiang:{宫:[宫,星,化]},chuanbing:{lixin:{化:[离心四化]},xiangxin:{化:[向心四化]}},dangongshuangxiang:{}}
+    const bingLianMap = { shengnianshuangxiang: {}, chuanbing: { lixin: {}, xiangxin: {} }, dangongshuangxiang: {} }
     // 质量变 {宫:{shengnian:[],lixin:[],xiangxin:[]}}
     const zhiLiangBianMap = {}
     // 反背 {化:{'离心':[离心四化],'向心':[向心四化]}}
@@ -221,6 +221,37 @@ function getSiHuas(life) {
         }
     }
 
+    // 遍历离心串联
+    for (let item in liXinChuanLianMap) {
+        bingLianMap.chuanbing.lixin[item] = []
+        for (let arr of liXinChuanLianMap[item]) {
+            // 检查该宫是否有生年四化
+            for (let shengNianSiHua of shengNianSiHuas) {
+                if (arr[0] === shengNianSiHua[0]) {
+                    bingLianMap.chuanbing.lixin[item].push(shengNianSiHua)
+                }
+            }
+        }
+        if (bingLianMap.chuanbing.lixin[item].length < 2) {
+            delete bingLianMap.chuanbing.lixin[item]
+        }
+    }
+    // 遍历向心串联
+    for (let item in xiangXinChuanLianMap) {
+        bingLianMap.chuanbing.xiangxin[item] = []
+        for (let arr of xiangXinChuanLianMap[item]) {
+            // 检查该宫是否有生年四化
+            for (let shengNianSiHua of shengNianSiHuas) {
+                if (arr[1] === shengNianSiHua[0]) {
+                    bingLianMap.chuanbing.xiangxin[item].push(shengNianSiHua)
+                }
+            }
+        }
+        if (bingLianMap.chuanbing.xiangxin[item].length < 2) {
+            delete bingLianMap.chuanbing.xiangxin[item]
+        }
+    }
+
     // 遍历生年本对双象
     for (let gong in bingLianMap.shengnianshuangxiang) {
         // 删除重复对宫
@@ -371,6 +402,8 @@ function getRes(Content) {
     // console.log(JSON.stringify(fanBeiMap))
     // console.log(JSON.stringify(zhiLiangBianMap, null, 2))
     // console.log(bingLianMap.shengnianshuangxiang)
+    // console.log(JSON.stringify(bingLianMap.chuanbing, null, 2))
+
 
     return res
 }
