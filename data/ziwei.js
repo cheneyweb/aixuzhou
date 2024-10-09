@@ -9,6 +9,12 @@ const DUIGONGMAP = {
     '命宫': '迁移', '兄弟': '仆役', '夫妻': '官禄', '子女': '田宅', '财帛': '福德', '疾厄': '父母',
     '迁移': '命宫', '仆役': '兄弟', '官禄': '夫妻', '田宅': '子女', '福德': '财帛', '父母': '疾厄'
 }
+
+const GONGXIANMAP = {
+    '命宫': '命迁', '兄弟': '兄仆', '夫妻': '夫官', '子女': '子田', '财帛': '财福', '疾厄': '疾父',
+    '迁移': '命迁', '仆役': '兄仆', '官禄': '夫官', '田宅': '子田', '福德': '财福', '父母': '疾父'
+}
+
 const SANHES = ['亥卯未', '寅午戌', '巳酉丑', '申子辰']
 const SIZHENGS = ['子午卯酉', '寅申巳亥', '辰戌丑未']
 
@@ -65,4 +71,4 @@ const SIHUAMAP = {
     '癸': { '破军': '禄', '巨门': '权', '太阴': '科', '贪狼': '忌' }
 }
 
-module.exports = { SHICHENMAP, GONGS, NEIWAIGONGMAP, DUIGONGMAP, SIHUAMAP, SANHES, SIZHENGS, HETUGONGZONGMAP1, HETUGONGZONGMAP2, NANXINGS, NVXINGS, SANHEMAP, SIZHENGMAP }
+module.exports = { SHICHENMAP, GONGS, NEIWAIGONGMAP, DUIGONGMAP, GONGXIANMAP, SIHUAMAP, SANHES, SIZHENGS, HETUGONGZONGMAP1, HETUGONGZONGMAP2, NANXINGS, NVXINGS, SANHEMAP, SIZHENGMAP }
