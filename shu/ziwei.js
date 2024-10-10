@@ -496,7 +496,7 @@ function getRes(Content) {
     res += `\n\n【来因宫质能变】`
     res += `\n\n【双象自化平衡】`
 
-    const newLocal = res += `\n\n【三合破】`
+    res += `\n\n【三合破】`
     for (let item of sanHePos) {
         res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
