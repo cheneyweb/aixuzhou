@@ -43,16 +43,16 @@ function getSiHuas(life) {
         chuanbing: { '禄': { lixin: [], xiangxin: [] }, '权': { lixin: [], xiangxin: [] }, '科': { lixin: [], xiangxin: [] }, '忌': { lixin: [], xiangxin: [] } },
         dangongshuangxiang: {}
     }
-    // 质量变 {宫:{shengnian:[],lixin:[],xiangxin:[]}}
+    // 质量变（同宫生年自化双象）{宫:{shengnian:[],lixin:[],xiangxin:[]}}
     const zhiLiangBianMap = {}
-    // 反背 {化:{lixin:[离心四化],xiangxin:[向心四化]}}
+    // 反背（异宫同化异向）{化:{lixin:[离心四化],xiangxin:[向心四化]}}
     const fanBeiMap = { '禄': { lixin: [], xiangxin: [] }, '权': { lixin: [], xiangxin: [] }, '科': { lixin: [], xiangxin: [] }, '忌': { lixin: [], xiangxin: [] } }
-    // 单爻变
-    // 三爻变
+    // 爻变（异宫同化异向） {化:[离心四化/向心四化]}
+    const yaoBianMap = { '禄': [], '权': [], '科': [], '忌': [] }
     // 双象自化平衡
-    // 破象
-    // 阻断
-    // 分裂
+    // 破象（本宫生年对宫离心）
+    // 阻断（禄随忌走/科随权走被同化同组离心 或 同宫同化异向）
+    // 分裂（同宫同组自化双象）
 
     // ===遍历三合宫位===
     for (let sanhe of ziwei.SANHES) {
@@ -204,11 +204,13 @@ function getSiHuas(life) {
     for (let liXinSiHua of liXinSiHuas) {
         liXinChuanLianMap[liXinSiHua[2]].push(liXinSiHua)
         fanBeiMap[liXinSiHua[2]].lixin.push(liXinSiHua)
+        yaoBianMap[liXinSiHua[2]].push(liXinSiHua)
     }
     // ===遍历向心四化===
     for (let xiangXinSiHua of xiangXinSiHuas) {
         xiangXinChuanLianMap[xiangXinSiHua[3]].push(xiangXinSiHua)
         fanBeiMap[xiangXinSiHua[3]].xiangxin.push(xiangXinSiHua)
+        yaoBianMap[xiangXinSiHua[3]].push(xiangXinSiHua)
     }
     // ===反背===
     for (let item in fanBeiMap) {
@@ -265,6 +267,14 @@ function getSiHuas(life) {
             bingLianMap.dangongshuangxiang[item].xiangxin = []
         }
     }
+    // ===爻变===
+    for (let hua in yaoBianMap) {
+        const hasLiXinSiHua = yaoBianMap[hua].find(o => o.length === 3)
+        const hasXiangXinSiHua = yaoBianMap[hua].find(o => o.length === 4)
+        if (!hasLiXinSiHua || !hasXiangXinSiHua) {
+            delete yaoBianMap[hua]
+        }
+    }
 
     return {
         sanHeGongMap,
@@ -281,6 +291,7 @@ function getSiHuas(life) {
         bingLianMap,
         zhiLiangBianMap,
         fanBeiMap,
+        yaoBianMap,
     }
 }
 
@@ -315,6 +326,7 @@ function getRes(Content) {
         bingLianMap,
         zhiLiangBianMap,
         fanBeiMap,
+        yaoBianMap,
     } = getSiHuas(life)
 
     res += `紫微解盘-${life.gender === '男' ? '乾' : '坤'}造`
@@ -432,7 +444,20 @@ function getRes(Content) {
         }
     }
 
-    res += `\n\n【三合破】`
+    res += `\n\n【爻变】`
+    for (let hua in yaoBianMap) {
+        res += `\n${hua}`
+        for (let arr of yaoBianMap[hua]) {
+            res += arr.length === 3 ? ` ${arr[0]} ${arr[1]}` : ` ${arr[1]} ${arr[2]}`
+        }
+    }
+
+    res += `\n\n【破象】`
+    res += `\n\n【阻断】`
+    res += `\n\n【分裂】`
+
+
+    const newLocal = res += `\n\n【三合破】`
     for (let item of sanHePos) {
         res += `\n${item[0]} ${item[1]} ↔ ${item[3]} ${item[4]} ${item[5]}`
     }
@@ -468,6 +493,7 @@ function getRes(Content) {
     // console.log(bingLianMap.shengnianshuangxiang)
     // console.log(JSON.stringify(bingLianMap.chuanbing, null, 2))
     // console.log(JSON.stringify(bingLianMap.dangongshuangxiang, null, 2))
+    // console.log(yaoBianMap)
 
     return res
 }
