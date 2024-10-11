@@ -14,11 +14,11 @@ function getSiHuas(life) {
     // 四正宫位 {四正:[宫,宫,宫,宫]}
     const siZhengGongMap = {}
 
-    // 生年四化 [宫,星,化]
+    // 生年四化 [[宫,星,化]]
     const shengNianSiHuas = []
-    // 离心四化 [宫,星,化]
+    // 离心四化 [[宫,星,化]]
     const liXinSiHuas = []
-    // 向心四化 [来源宫,目的宫,星,化]
+    // 向心四化 [[来源宫,目的宫,星,化]]
     const xiangXinSiHuas = []
     // 飞宫四化 {来源宫:[目的宫,星,化]}
     const feiGongSiHuaMap = {}
@@ -31,19 +31,18 @@ function getSiHuas(life) {
     const siZhengPos = []
 
     // 串联 {化:[离心四化/向心四化]}
-    const liXinChuanLianMap = { '禄': [], '权': [], '科': [], '忌': [] }
-    const xiangXinChuanLianMap = { '禄': [], '权': [], '科': [], '忌': [] }
+    const chuanLianMap = { lixin: { '禄': [], '权': [], '科': [], '忌': [] }, xiangxin: { '禄': [], '权': [], '科': [], '忌': [] } }
     // 并联
-    // 生年本对双象 shengnianshuangxiang:{宫线:[宫,星,化]}
-    // 多宫串联形成生年双象 chuanbing:{化:{lixin:[离心四化],xiangxin:[向心四化]}}
-    // 单宫双象自化形成生年并联 dangongshuangxiang:{宫:{lixin:[离心四化],xiangxin:[向心四化]}}
-    // 飞宫遇生年产生双象
+    // （本对生年双象） shengnianshuangxiang:{宫线:[宫,星,生年四化]}
+    // （多宫串联形成生年双象） chuanlianshuangxiang:{化:{lixin:[生年四化],xiangxin:[生年四化]}}
+    // （单宫同化同向双象形成生年并联） dangongshuangxiang:{宫:{lixin:[离心四化],xiangxin:[向心四化]}}
+    // （飞宫遇生年产生双象）
     const bingLianMap = {
         shengnianshuangxiang: {},
-        chuanbing: { '禄': { lixin: [], xiangxin: [] }, '权': { lixin: [], xiangxin: [] }, '科': { lixin: [], xiangxin: [] }, '忌': { lixin: [], xiangxin: [] } },
+        chuanlianshuangxiang: { '禄': { lixin: [], xiangxin: [] }, '权': { lixin: [], xiangxin: [] }, '科': { lixin: [], xiangxin: [] }, '忌': { lixin: [], xiangxin: [] } },
         dangongshuangxiang: {}
     }
-    // 质量变（同宫生年自化双象）{宫:{shengnian:[],lixin:[],xiangxin:[]}}
+    // 质量变（同宫生年自化双象）{宫:{shengnian:[生年四化],lixin:[离心四化],xiangxin:[向心四化]}}
     const zhiLiangBianMap = {}
     // 反背（异宫同化异向）{化:{lixin:[离心四化],xiangxin:[向心四化]}}
     const fanBeiMap = { '禄': { lixin: [], xiangxin: [] }, '权': { lixin: [], xiangxin: [] }, '科': { lixin: [], xiangxin: [] }, '忌': { lixin: [], xiangxin: [] } }
@@ -104,15 +103,13 @@ function getSiHuas(life) {
             if (star.mutagen) {
                 shengNianSiHuaGongMap[star.mutagen] = palaceFrom
                 shengNianSiHuas.push([palaceFrom.name, star.name, star.mutagen])
-                !isGongXianRepeat && bingLianMap.shengnianshuangxiang[gongXian].push([palaceFrom.name, star.name, star.mutagen])// 每个本对宫线内的星耀生年四化累叠
+                !isGongXianRepeat && bingLianMap.shengnianshuangxiang[gongXian].push(shengNianSiHuas.at(-1))// 每个本对宫线内的星耀生年四化累叠
             }
             // 离心四化
             const starSiHua = ziwei.SIHUAMAP[palaceFrom.heavenlyStem][star.name]
             if (starSiHua) {
                 liXinSiHuas.push([palaceFrom.name, star.name, starSiHua])
-                if (!bingLianMap.dangongshuangxiang[palaceFrom.name]) {
-                    bingLianMap.dangongshuangxiang[palaceFrom.name] = { lixin: [], xiangxin: [] }
-                }
+                bingLianMap.dangongshuangxiang[palaceFrom.name] = bingLianMap.dangongshuangxiang[palaceFrom.name] || { lixin: [], xiangxin: [] }
                 bingLianMap.dangongshuangxiang[palaceFrom.name].lixin.push(liXinSiHuas.at(-1))
             }
 
@@ -141,9 +138,7 @@ function getSiHuas(life) {
             const starSiHua = ziwei.SIHUAMAP[palaceFrom.heavenlyStem][star.name]
             if (starSiHua) {
                 xiangXinSiHuas.push([palaceFrom.name, palaceTo.name, star.name, starSiHua])
-                if (!bingLianMap.dangongshuangxiang[palaceTo.name]) {
-                    bingLianMap.dangongshuangxiang[palaceTo.name] = { lixin: [], xiangxin: [] }
-                }
+                bingLianMap.dangongshuangxiang[palaceTo.name] = bingLianMap.dangongshuangxiang[palaceTo.name] || { lixin: [], xiangxin: [] }
                 bingLianMap.dangongshuangxiang[palaceTo.name].xiangxin.push(xiangXinSiHuas.at(-1))
             }
         }
@@ -188,17 +183,15 @@ function getSiHuas(life) {
             }
         }
         // 质量变
-        if (!zhiLiangBianMap[shengNianSiHua[0]]) {
-            zhiLiangBianMap[shengNianSiHua[0]] = { shengnian: [], lixin: [], xiangxin: [] }
-        }
+        zhiLiangBianMap[shengNianSiHua[0]] = zhiLiangBianMap[shengNianSiHua[0]] || { shengnian: [], lixin: [], xiangxin: [] }
         zhiLiangBianMap[shengNianSiHua[0]].shengnian.push(shengNianSiHua)
         for (let liXinSiHua of liXinSiHuas) {
-            if (shengNianSiHua[0] === liXinSiHua[0] && shengNianSiHua[2] !== liXinSiHua[2]) {
+            if (shengNianSiHua[0] === liXinSiHua[0] && shengNianSiHua[2] !== liXinSiHua[2]) {// 同宫异化
                 zhiLiangBianMap[shengNianSiHua[0]].lixin.push(liXinSiHua)
             }
         }
         for (let xiangXinSiHua of xiangXinSiHuas) {
-            if (shengNianSiHua[0] === xiangXinSiHua[1] && shengNianSiHua[2] !== xiangXinSiHua[3]) {
+            if (shengNianSiHua[0] === xiangXinSiHua[1] && shengNianSiHua[2] !== xiangXinSiHua[3]) {// 同宫异化
                 zhiLiangBianMap[shengNianSiHua[0]].xiangxin.push(xiangXinSiHua)
             }
         }
@@ -208,7 +201,7 @@ function getSiHuas(life) {
     }
     // ===遍历离心四化===
     for (let liXinSiHua of liXinSiHuas) {
-        liXinChuanLianMap[liXinSiHua[2]].push(liXinSiHua)
+        chuanLianMap.lixin[liXinSiHua[2]].push(liXinSiHua)
         fanBeiMap[liXinSiHua[2]].lixin.push(liXinSiHua)
         yaoBianMap[liXinSiHua[2]].push(liXinSiHua)
         // 离心下遍历生年四化
@@ -240,64 +233,49 @@ function getSiHuas(life) {
     }
     // ===遍历向心四化===
     for (let xiangXinSiHua of xiangXinSiHuas) {
-        xiangXinChuanLianMap[xiangXinSiHua[3]].push(xiangXinSiHua)
+        chuanLianMap.xiangxin[xiangXinSiHua[3]].push(xiangXinSiHua)
         fanBeiMap[xiangXinSiHua[3]].xiangxin.push(xiangXinSiHua)
         yaoBianMap[xiangXinSiHua[3]].push(xiangXinSiHua)
     }
     // ===反背===
     for (let item in fanBeiMap) {
-        fanBeiMap[item].xiangxin = fanBeiMap[item].xiangxin.filter(xiangXinSiHua => fanBeiMap[item].lixin.find(liXinSiHua => liXinSiHua[0] !== xiangXinSiHua[1]))
+        fanBeiMap[item].xiangxin = fanBeiMap[item].xiangxin.filter(xiangXinSiHua => fanBeiMap[item].lixin.find(liXinSiHua => liXinSiHua[0] !== xiangXinSiHua[1]))//同化异宫异向
         if (fanBeiMap[item].lixin.length === 0 || fanBeiMap[item].xiangxin.length === 0) {
             delete fanBeiMap[item]
         }
     }
     // ===遍历离心串联===
-    for (let item in liXinChuanLianMap) {
+    for (let item in chuanLianMap.lixin) {
         // 删除非串联
-        if (liXinChuanLianMap[item].length < 2) {
-            delete liXinChuanLianMap[item]
+        if (chuanLianMap.lixin[item].length < 2) {
+            delete chuanLianMap.lixin[item]
         } else {
-            for (let arr of liXinChuanLianMap[item]) {
-                // 检查该宫是否有生年四化
-                for (let shengNianSiHua of shengNianSiHuas) {
-                    if (arr[0] === shengNianSiHua[0]) {
-                        bingLianMap.chuanbing[item].lixin.push(shengNianSiHua)
-                    }
-                }
+            // 检查每宫是否有生年四化
+            for (let arr of chuanLianMap.lixin[item]) {
+                const shengNianSiHua = shengNianSiHuas.find(o => o[0] === arr[0])
+                shengNianSiHua && bingLianMap.chuanlianshuangxiang[item].lixin.push(shengNianSiHua)
             }
-            if (bingLianMap.chuanbing[item].lixin.length < 2) {
-                bingLianMap.chuanbing[item].lixin = []
-            }
+            bingLianMap.chuanlianshuangxiang[item].lixin = bingLianMap.chuanlianshuangxiang[item].lixin.length < 2 ? [] : bingLianMap.chuanlianshuangxiang[item].lixin
         }
     }
     // ===遍历向心串联===
-    for (let item in xiangXinChuanLianMap) {
+    for (let item in chuanLianMap.xiangxin) {
         // 删除非串联
-        if (xiangXinChuanLianMap[item].length < 2) {
-            delete xiangXinChuanLianMap[item]
+        if (chuanLianMap.xiangxin[item].length < 2) {
+            delete chuanLianMap.xiangxin[item]
         } else {
-            for (let arr of xiangXinChuanLianMap[item]) {
-                // 检查该宫是否有生年四化
-                for (let shengNianSiHua of shengNianSiHuas) {
-                    if (arr[1] === shengNianSiHua[0]) {
-                        bingLianMap.chuanbing[item].xiangxin.push(shengNianSiHua)
-                    }
-                }
+            // 检查每宫是否有生年四化
+            for (let arr of chuanLianMap.xiangxin[item]) {
+                const shengNianSiHua = shengNianSiHuas.find(o => o[0] === arr[0])
+                shengNianSiHua && bingLianMap.chuanlianshuangxiang[item].xiangxin.push(shengNianSiHua)
             }
-            if (bingLianMap.chuanbing[item].xiangxin.length < 2) {
-                bingLianMap.chuanbing[item].xiangxin = []
-            }
+            bingLianMap.chuanlianshuangxiang[item].xiangxin = bingLianMap.chuanlianshuangxiang[item].xiangxin.length < 2 ? [] : bingLianMap.chuanlianshuangxiang[item].xiangxin
         }
     }
-    // ===遍历单宫双象并联===
+    // ===遍历单宫同化同向双象并联===
     for (let item in bingLianMap.dangongshuangxiang) {
-        if (bingLianMap.dangongshuangxiang[item].lixin.length < 2) {
-            bingLianMap.dangongshuangxiang[item].lixin = []
-        }
-
-        if (bingLianMap.dangongshuangxiang[item].xiangxin.length < 2) {
-            bingLianMap.dangongshuangxiang[item].xiangxin = []
-        }
+        bingLianMap.dangongshuangxiang[item].lixin = bingLianMap.dangongshuangxiang[item].lixin.length < 2 ? [] : bingLianMap.dangongshuangxiang[item].lixin
+        bingLianMap.dangongshuangxiang[item].xiangxin = bingLianMap.dangongshuangxiang[item].xiangxin.length < 2 ? [] : bingLianMap.dangongshuangxiang[item].xiangxin
     }
     // ===爻变===
     for (let hua in yaoBianMap) {
@@ -318,8 +296,7 @@ function getSiHuas(life) {
         gongNanNvMap,
         sanHePos,
         siZhengPos,
-        liXinChuanLianMap,
-        xiangXinChuanLianMap,
+        chuanLianMap,
         bingLianMap,
         zhiLiangBianMap,
         fanBeiMap,
@@ -356,8 +333,7 @@ function getRes(Content) {
         gongNanNvMap,
         sanHePos,
         siZhengPos,
-        liXinChuanLianMap,
-        xiangXinChuanLianMap,
+        chuanLianMap,
         bingLianMap,
         zhiLiangBianMap,
         fanBeiMap,
@@ -396,41 +372,48 @@ function getRes(Content) {
     // }
 
     res += `\n\n【串联】\n`
-    for (let item in liXinChuanLianMap) {
-        res += `${liXinChuanLianMap[item][0][2]} ↑ `
-        for (let arr of liXinChuanLianMap[item]) {
+    for (let item in chuanLianMap.lixin) {
+        res += `${chuanLianMap.lixin[item][0][2]} ↑ `
+        for (let arr of chuanLianMap.lixin[item]) {
             res += `${arr[0]} `
         }
         res += `\n`
     }
-    for (let item in xiangXinChuanLianMap) {
-        res += `${xiangXinChuanLianMap[item][0][3]} → `
-        for (let arr of xiangXinChuanLianMap[item]) {
+    for (let item in chuanLianMap.xiangxin) {
+        res += `${chuanLianMap.xiangxin[item][0][3]} → `
+        for (let arr of chuanLianMap.xiangxin[item]) {
             res += `${arr[1]} `
         }
     }
 
     res += `\n\n【并联】`
     for (let item in bingLianMap.shengnianshuangxiang) {
-        res += `\n${item} | `
-        for (let i = 0; i < bingLianMap.shengnianshuangxiang[item].length; i++) {
-            const arr = bingLianMap.shengnianshuangxiang[item][i]
-            res += ` ${arr[0]} ${arr[1]} ${arr[2]}`
+        res += `\n生年 ${item} |`
+        for (let arr of bingLianMap.shengnianshuangxiang[item]) {
+            res += ` ${arr[1]}${arr[2]}`
         }
     }
     res += `\n`
-    for (let item in bingLianMap.chuanbing) {
-        if (bingLianMap.chuanbing[item].lixin.length > 0) {
-            res += `\n${item} ↑`
+    for (let item in bingLianMap.chuanlianshuangxiang) {
+        if (bingLianMap.chuanlianshuangxiang[item].lixin.length > 0) {
+            res += `\n${item} ↑ `
+            for (let arr of bingLianMap.chuanlianshuangxiang[item].lixin) {
+                res += `${arr[0][0]}`
+            }
+            res += ` |`
+            for (let arr of bingLianMap.chuanlianshuangxiang[item].lixin) {
+                res += ` ${arr[1]}${arr[2]}`
+            }
         }
-        for (let arr of bingLianMap.chuanbing[item].lixin) {
-            res += ` ${arr[0]} ${arr[1]} ${arr[2]}`
-        }
-        if (bingLianMap.chuanbing[item].xiangxin.length > 0) {
-            res += `\n${item} →`
-        }
-        for (let arr of bingLianMap.chuanbing[item].xiangxin) {
-            res += ` ${arr[0]} ${arr[1]} ${arr[2]}`
+        if (bingLianMap.chuanlianshuangxiang[item].xiangxin.length > 0) {
+            res += `\n${item} → `
+            for (let arr of bingLianMap.chuanlianshuangxiang[item].xiangxin) {
+                res += `${arr[0][0]}`
+            }
+            res += ` |`
+            for (let arr of bingLianMap.chuanlianshuangxiang[item].xiangxin) {
+                res += ` ${arr[1]}${arr[2]}`
+            }
         }
     }
     res += `\n`
@@ -439,38 +422,37 @@ function getRes(Content) {
             res += `\n${item} ↑`
         }
         for (let arr of bingLianMap.dangongshuangxiang[item].lixin) {
-            res += ` ${arr[1]} ${arr[2]}`
+            res += ` ${arr[1]}${arr[2]}`
         }
         if (bingLianMap.dangongshuangxiang[item].xiangxin.length > 0) {
             res += `\n${item} →`
         }
         for (let arr of bingLianMap.dangongshuangxiang[item].xiangxin) {
-            res += ` ${arr[2]} ${arr[3]}`
+            res += ` ${arr[2]}${arr[3]}`
         }
     }
 
-    res += `\n\n【质量变】\n`
+    res += `\n\n【质量变】`
     for (let item in zhiLiangBianMap) {
-        res += `${item}`
+        res += `\n${item}`
         for (let arr of zhiLiangBianMap[item].shengnian) {
-            res += ` ${arr[1]} ${arr[2]}`
+            res += ` ${arr[1]}${arr[2]}`
         }
         if (zhiLiangBianMap[item].lixin.length > 0) {
             res += ` ↑`
-        }
-        for (let arr of zhiLiangBianMap[item].lixin) {
-            res += ` ${arr[1]} ${arr[2]}`
+            for (let arr of zhiLiangBianMap[item].lixin) {
+                res += ` ${arr[1]}${arr[2]}`
+            }
         }
         if (zhiLiangBianMap[item].xiangxin.length > 0) {
             res += ` →`
+            for (let arr of zhiLiangBianMap[item].xiangxin) {
+                res += ` ${arr[2]}${arr[3]}`
+            }
         }
-        for (let arr of zhiLiangBianMap[item].xiangxin) {
-            res += ` ${arr[2]} ${arr[3]}`
-        }
-        res += `\n`
     }
 
-    res += `\n【反背】`
+    res += `\n\n【反背】`
     for (let item in fanBeiMap) {
         res += `\n${item} ↑`
         for (let arr of fanBeiMap[item].lixin) {
@@ -484,9 +466,9 @@ function getRes(Content) {
 
     res += `\n\n【爻变】`
     for (let hua in yaoBianMap) {
-        res += `\n${hua}`
+        res += `\n${hua} x`
         for (let arr of yaoBianMap[hua]) {
-            res += arr.length === 3 ? ` ${arr[0]} ${arr[1]}` : ` ${arr[1]} ${arr[2]}`
+            res += arr.length === 3 ? ` ${arr[0]}` : ` ${arr[1]}`
         }
     }
 
@@ -525,12 +507,12 @@ function getRes(Content) {
     // console.log(gongNanNvMap)
     // console.log(sanHePos)
     // console.log(siZhengPos)
-    // console.log(liXinChuanLianMap)
-    // console.log(xiangXinChuanLianMap)
+    // console.log(chuanLianMap.lixin)
+    // console.log(chuanLianMap.xiangxin)
     // console.log(JSON.stringify(fanBeiMap, null, 2))
     // console.log(JSON.stringify(zhiLiangBianMap, null, 2))
     // console.log(bingLianMap.shengnianshuangxiang)
-    // console.log(JSON.stringify(bingLianMap.chuanbing, null, 2))
+    // console.log(JSON.stringify(bingLianMap.chuanlianshuangxiang, null, 2))
     // console.log(JSON.stringify(bingLianMap.dangongshuangxiang, null, 2))
     // console.log(yaoBianMap)
     // console.log(poXiangMap)

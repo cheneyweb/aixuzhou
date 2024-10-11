@@ -164,7 +164,7 @@ const GUAS = [
         'jibing': '病在肠胃，足部或泌尿系统，不宜掉以轻心',
         'shiwu': '难以寻回',
         'susong': '小事粘滞纠缠，大事反无大害，宜和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '兵征大宛,北出玉关.与胡寇战,平城道西,七日绝粮,身几不全.'
     },
     {
         'index': 4,
