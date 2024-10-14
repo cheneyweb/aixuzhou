@@ -1,3 +1,5 @@
+const GUA_EXTRAS = require('./gua_extra.js')
+
 const BAGUAS = [
     {
         'symbol': '☰',
@@ -123,10 +125,10 @@ const GUAS = [
         'shiwu': '可望寻回',
         'susong': '宜据理力争',
         'jiaoshiyilin': '道徙多阪,胡言连蹇.译喑且聋,莫使道通.请遏不行,求事无功.',
-        'zhouyiguaci': '乾为天\n乾:元亨利贞.\n彖曰:大哉乾元,万物资始,乃统天.云行雨施,品物流形.大明始终,六位时成,时乘六龙以御天.乾道变化,各正性命,保合大和,乃利贞.首出庶物,万国咸宁.\n象曰:天行健,君子以自强不息.\n初九:潜龙勿用.象曰:潜龙勿用,阳在下也.\n九二:见龙在田,利见大人.象曰:见龙在田,德施普也.\n九三:君子终日乾乾,夕惕若；厉,无咎.象曰:终日乾乾,反复道也.\n九四:或跃在渊,无咎.象曰:或跃在渊,进无咎也.\n九五:飞龙在天,利见大人.象曰:飞龙在天,大人造也.上九:亢龙有悔.象曰:亢龙有悔,盈不可久也.',
-        'chuantongjiegua': '乾为天\n这个卦是同卦(下乾上乾)相叠.象征天,喻龙(德才的君子),又象征纯粹的阳和健,表明兴盛强健.乾卦是根据万物变通的道理,以“元,亨,利,贞”为卦辞,表示吉祥如意,教导人遵守天道的德行.\n大象:天行刚健,自强不息.\n运势:飞龙在天,名利双收之象,宜把握机会,争取成果.\n事业:大吉大利,万事如意,心想事成,自有天佑,春风得意,事业如日中天.但阳气已达顶点,盛极必衰,务须提高警惕,小心谨慎.力戒骄傲,冷静处世,心境平和,如是则能充分发挥才智,保证事业成功.\n经商:十分顺利,有发展向上的大好机会.但切勿操之过急,宜冷静分析形势,把握时机,坚持商业道德,冷静对待中途出现的困难,定会有满意的结果.\n求名:潜在能力尚未充分发挥,只要进一步努力,克服骄傲自满情绪,进业修德,以渊博学识和高尚品质,成君子之名.\n婚恋:阳盛阴衰,但刚柔可相济,形成美满结果.女性温柔者更佳.\n决策:可成就大的事业.坚持此卦的刚健,正直,公允的实质,修养德行,积累知识,坚定信念,自强不息,必能克服困难,消除灾难.',
-        'zhangmingrenjiegua': '乾为天\n天,表示极阳之象,为纯卦,六冲卦,是大好,大坏的卦象.对事一般为吉象,为主管,负责任,可以任用担当大事,或开业当老板,得此卦都属吉象,只是必须有一个好的助理更佳,升官,考试,升迁都较有利.\n解释:刚健稳固\n特性:积极,刚毅,努力,认真,有耐性,坚忍,正派,主动,慷慨,严律,重名誉.\n运势:有地位擢升,名利双收之象,功名荣显得贵子.六亲和睦,凡事谦和为贵可吉\n家运:繁昌兴隆,须小心口舌之争.\n疾病:病情恶化,宜细心调养,注意头,脑,骨髓等病变.胎孕:有不安之兆,宜小心保养\n子女:儿女健康,幸福有为.\n周转:虽不成问题,尚宜心平气和来处理.买卖:小利可得,大则勿取,勿太张扬为吉.等人:一定会来.\n寻人:已远走高飞,不易找到,在西北方向.失物:可望寻回\n外出:利于出行,结伴而行更佳考试:有望取得好成绩.\n诉讼:宜据理力争.\n求事:有贵人提拔,可发展,称心.改行:占得此卦不宜改行.\n开业:开业者需要耐心观望.',
-        'gaodaoyiduan': '乾为天\n问天气:二、三、四、五爻如果发生变动,一定是晴天。\n问买卖:不利于买而利于卖。\n问祸福:所谓“积善之家,必有余庆；积不善之家,必有余殃”,恐怕不是应验在当代人身上,而是应验在后代身上。\n问常人:有置身过高,不了解日常事务的忧虑。\n问贤人:有知道天命而独自行道之象。恐怕成群的阴柔潜伏,有被众多小人用谗言罗织陷害的危险。\n初爻\n问征战:乾为武人,有征战之象。初爻阳气开始发动于黄泉,还处于潜伏状态,故称“潜龙”。在军事,象征军令刚刚下达,大军还没有集结起来的时候,所以应该按兵不动,等待条件成熟。吉。\n问经商:龙在潜隐状态而说“勿用”,可见虽然是一种好贸易,但是只可以安居守分,不可急于行动。\n问功名:龙本是飞黄腾达的动物,而初爻却说潜,说明没到风云际会的时候,所以又说“位在下”。\n问婚姻:乾卦初爻变阴则全卦为姤,姤卦说“女壮,勿用取女”,所以应当戒止。\n问家宅:震为龙,在东方,说明住宅的东面必定有深水。这水闭塞不流,应该加以修凿,使它流动。\n问胎孕:生男孩。\n二爻\n问征战:龙本来属于灵物。初爻说潜,是指伏兵。二爻说见,是从潜隐中出现而可见了。又说“在田”,一定列阵在田野等空旷的地方。《象传》说“德施普也”,指一定会得胜而论功行赏。\n问经商:爻辞说“见龙在田”,可知货物大体是米麦丝棉之类。见,指物价开始上涨；“利见大人”,是说应当有官场人物出来购买。\n问功名:隐伏在田间的人,应当乘时上进,发挥作用。会得到贵人的帮助,所以说“利见大人”。\n问婚姻:二爻和五爻相应,五爻为地位崇高,主女婿家必定尊贵。说“见龙”,一定是刚刚被任用的年轻人。大吉。\n问胎孕:生男孩,并且主贵。\n三爻\n问征战:征战是危险的事情。爻辞说“终日乾乾,夕惕若”,说明问卦者能“临事而惧”,所以没有灾祸。\n问功名:九三在下卦的上位,而在全卦则爻位还低,象征功名还不显著,所以称君子；在多忧患和危险的位置,所以说“乾乾”、“惕若”,这样才能避免灾祸。\n问经商:居于不得中的位置,行走于“重刚”的险地,想来贸易处一定是个危险的地方,日夜防备才能脱险而获利。\n问家宅:观察爻象,必须谨慎地把持自身,勤劳节俭地保持家业,这样才没有灾祸。\n问婚嫁:三爻以上九为应爻,三爻地位低,上爻地位高。高则不免过亢而有悔恨,所以不宜向地位高的人攀结亲事。\n问胎孕:生男孩。生产时稍有危险和惊惧,但最终没有灾祸。\n四爻\n问征战:观察爻象,在行军前进的时候,一定有深水阻隔,应该安排船或筏；或者在临渊处有敌军埋伏,应当预先设防,才能避免灾咎。\n问经商:爻辞说“或跃在渊”,如果贩运海货,恐怕有遇到波涛的危险。或许物价一时上涨,但爻辞说“无咎”,可以保证无害。\n问功名:有一举成名之象,大吉。\n问家宅:渊是水,跃是飞跃,家道有一时振兴之象。\n问胎孕:生男孩。\n五爻\n问征战:九五居君位,一定是天子御驾亲征,以王者之师讨伐有罪的人,所以说“大人造”。\n问经商:九五爻辰在申,在天上值毕宿,附星有咸池。咸池是苍龙的宅舍,也叫五车,主稻黍豆麦,所以他的贸易一定是五谷之类。说“飞龙”,可以知道物价的飞升；说“利见大人”,可知贩运或许出自政府的命令。\n问功名:有直达云霄之象。\n问疾病:有应上天的召唤之象,不吉。\n问胎孕:生男孩,主尊责。\n上爻\n问征战:上九居乾卦的极位,以阳爻在上位,所以亢；亢就会因为胜利而骄傲,所以“有悔”。《象传》说“盈不可久”,可知征战无法持久。\n问经商:亢是太过的意思。买卖之道,不可以过分追求盈利,过于盈利就一定会发生亏损,所以说“不可久”。\n问功名:上九的位置已到极致,应该自己返身后退,否则必定因为盈满而遭受损害。\n问家宅:一定是宅基太高。太高就危险,也是值得畏惧的。\n问疾病:是龙阳上升的病症。《象传》说“盈不可久”,可知性命已经在旦夕之间了。可怕。\n问婚嫁:不利。\n问胎孕:生男孩,恐怕养不大。'
+        'zhouyiguaci': GUA_EXTRAS[0][0],
+        'chuantongjiegua': GUA_EXTRAS[0][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[0][2],
+        'gaodaoyiduan': GUA_EXTRAS[0][3],
     },
     {
         'index': 2,
@@ -145,7 +147,11 @@ const GUAS = [
         'jibing': '病情严重，为腹、肠胃、肌肉等慢性病（腹疾、脾胃之疾、饮食停滞，从而食不化）',
         'shiwu': '难以寻回，大部分均不知下落',
         'susong': '防房地产之争，宜和解，有始无终之兆',
-        'jiaoshiyilin': '不风不雨,白日皎皎.宜出驱驰,通利大道.'
+        'jiaoshiyilin': '不风不雨,白日皎皎.宜出驱驰,通利大道.',
+        'zhouyiguaci': GUA_EXTRAS[1][0],
+        'chuantongjiegua': GUA_EXTRAS[1][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[1][2],
+        'gaodaoyiduan': GUA_EXTRAS[1][3],
     },
     {
         'index': 3,
@@ -164,7 +170,11 @@ const GUAS = [
         'jibing': '病在肠胃，足部或泌尿系统，不宜掉以轻心',
         'shiwu': '难以寻回',
         'susong': '小事粘滞纠缠，大事反无大害，宜和解',
-        'jiaoshiyilin': '兵征大宛,北出玉关.与胡寇战,平城道西,七日绝粮,身几不全.'
+        'jiaoshiyilin': '兵征大宛,北出玉关.与胡寇战,平城道西,七日绝粮,身几不全.',
+        'zhouyiguaci': GUA_EXTRAS[2][0],
+        'chuantongjiegua': GUA_EXTRAS[2][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[2][2],
+        'gaodaoyiduan': GUA_EXTRAS[2][3],
     },
     {
         'index': 4,
@@ -183,7 +193,11 @@ const GUAS = [
         'jibing': '病情不明，反覆难治。为肠胃、腹水之疾及传染病',
         'shiwu': '遍寻不获。似乎在大门下陷之处遗失，忘记带走，可试问人',
         'susong': '因外人引起事端，目下未明，有理讲不清',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[3][0],
+        'chuantongjiegua': GUA_EXTRAS[3][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[3][2],
+        'gaodaoyiduan': GUA_EXTRAS[3][3],
     },
     {
         'index': 5,
@@ -202,7 +216,11 @@ const GUAS = [
         'jibing': '病情拖延，须留心治疗，为头、胸、肺、泌尿系统等病',
         'shiwu': '即时不能寻回，需经过一段时间将会出现',
         'susong': '暂时未能了结，以和为贵',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[4][0],
+        'chuantongjiegua': GUA_EXTRAS[4][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[4][2],
+        'gaodaoyiduan': GUA_EXTRAS[4][3],
     },
     {
         'index': 6,
@@ -221,7 +239,11 @@ const GUAS = [
         'jibing': '病情严重，为腰、血液、泌尿系统、头部疾患',
         'shiwu': '不会出现',
         'susong': '两败俱伤，宜找中间人调解，久争无益',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[5][0],
+        'chuantongjiegua': GUA_EXTRAS[5][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[5][2],
+        'gaodaoyiduan': GUA_EXTRAS[5][3],
     },
     {
         'index': 7,
@@ -240,7 +262,11 @@ const GUAS = [
         'jibing': '病况严重，提防心脏或腹腔肿瘤等',
         'shiwu': '不会出现，即或寻回，也已损坏',
         'susong': '宜进不宜退，内心虽忧，但得贵人之助',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[6][0],
+        'chuantongjiegua': GUA_EXTRAS[6][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[6][2],
+        'gaodaoyiduan': GUA_EXTRAS[6][3],
     },
     {
         'index': 8,
@@ -259,7 +285,11 @@ const GUAS = [
         'jibing': '新病宜速就医，久病则危，为腹、肾、耳等疾',
         'shiwu': '不会再现。通常均已遭损毁',
         'susong': '宜以和解态度面对，虽小人多，但可胜诉',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[7][0],
+        'chuantongjiegua': GUA_EXTRAS[7][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[7][2],
+        'gaodaoyiduan': GUA_EXTRAS[7][3],
     },
 
     {
@@ -279,7 +309,11 @@ const GUAS = [
         'jibing': '危，重病，注意肝胆，头部病变',
         'shiwu': '似乎遗失的是金器或现金支票等物，有被硬物夹住，或者第三格的地方',
         'susong': '会因证据不足而败诉',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[8][0],
+        'chuantongjiegua': GUA_EXTRAS[8][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[8][2],
+        'gaodaoyiduan': GUA_EXTRAS[8][3],
     },
     {
         'index': 10,
@@ -298,7 +332,11 @@ const GUAS = [
         'jibing': '病虽重,但注意调理亦可愈,防头、口、肺等疾',
         'shiwu': '赶快去找有可能寻回,留意行过的路上,或者有鞋的地方',
         'susong': '敌强而我弱之象,宜步步为营',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[9][0],
+        'chuantongjiegua': GUA_EXTRAS[9][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[9][2],
+        'gaodaoyiduan': GUA_EXTRAS[9][3],
     },
     {
         'index': 11,
@@ -317,7 +355,11 @@ const GUAS = [
         'jibing': '久病不利,注意肠肺及头部之症',
         'shiwu': '不会出现',
         'susong': '是非由小事化大,终可和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[10][0],
+        'chuantongjiegua': GUA_EXTRAS[10][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[10][2],
+        'gaodaoyiduan': GUA_EXTRAS[10][3],
     },
     {
         'index': 12,
@@ -336,7 +378,11 @@ const GUAS = [
         'jibing': '占病为凶兆,病在脑、肺及肠胃等,慎防癌症',
         'shiwu': '寻不回',
         'susong': '各走极端,有口难言,宜及时求和',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[11][0],
+        'chuantongjiegua': GUA_EXTRAS[11][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[11][2],
+        'gaodaoyiduan': GUA_EXTRAS[11][3],
     },
     {
         'index': 13,
@@ -355,7 +401,11 @@ const GUAS = [
         'jibing': '病轻,不久可愈,注意心脏,头肺等疾',
         'shiwu': '遗失似文件眼镜等物,可能被压在底层,尽快找寻,则可取回',
         'susong': '凡事以和为贵',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[12][0],
+        'chuantongjiegua': GUA_EXTRAS[12][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[12][2],
+        'gaodaoyiduan': GUA_EXTRAS[12][3],
     },
     {
         'index': 14,
@@ -374,7 +424,11 @@ const GUAS = [
         'jibing': '治疗可愈,防高血压、心脏、头肺病患',
         'shiwu': '找寻费时,惟可失而得',
         'susong': '可圆满解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[13][0],
+        'chuantongjiegua': GUA_EXTRAS[13][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[13][2],
+        'gaodaoyiduan': GUA_EXTRAS[13][3],
     },
     {
         'index': 15,
@@ -393,7 +447,11 @@ const GUAS = [
         'jibing': '防旧病发,腹部或背部之疾,但仍属吉象',
         'shiwu': '难以发现,有失窃的可能',
         'susong': '宜速和解,拖延不利',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[14][0],
+        'chuantongjiegua': GUA_EXTRAS[14][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[14][2],
+        'gaodaoyiduan': GUA_EXTRAS[14][3],
     },
     {
         'index': 16,
@@ -412,7 +470,11 @@ const GUAS = [
         'jibing': '凶险之卦,注意头、目、筋骨、高血压、中风、肝胆、足疾',
         'shiwu': '难以寻回',
         'susong': '有始而无终,易被多人连累,破财、受惊',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[15][0],
+        'chuantongjiegua': GUA_EXTRAS[15][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[15][2],
+        'gaodaoyiduan': GUA_EXTRAS[15][3],
     },
 
     {
@@ -432,7 +494,11 @@ const GUAS = [
         'jibing': '病重,须长期治疗,注意口腔、肝、足患等症',
         'shiwu': '即将疏忽之时,会突然察觉',
         'susong': '宜决意和解,目前无忧,但不久须防有祸',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[16][0],
+        'chuantongjiegua': GUA_EXTRAS[16][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[16][2],
+        'gaodaoyiduan': GUA_EXTRAS[16][3],
     },
     {
         'index': 18,
@@ -451,7 +517,11 @@ const GUAS = [
         'jibing': '宜把握治疗时机,冬季占得险象,为内脏恶性疾病',
         'shiwu': '找不回来,遗失似是木制工艺品,在门口或旅馆遗失,或者是寄失了',
         'susong': '慎防桃色纠纷,会拖一段时间,不易解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[17][0],
+        'chuantongjiegua': GUA_EXTRAS[17][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[17][2],
+        'gaodaoyiduan': GUA_EXTRAS[17][3],
     },
     {
         'index': 19,
@@ -470,7 +540,11 @@ const GUAS = [
         'jibing': '病情较轻,为肠胃,口腔之疾,并防泌尿生殖系统病变',
         'shiwu': '不能立即发现,很久才能找回.可能被埋在地下,是件会发声或震动的物件',
         'susong': '宜柔不宜刚,因本欲欺他人,反伤自己',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[18][0],
+        'chuantongjiegua': GUA_EXTRAS[18][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[18][2],
+        'gaodaoyiduan': GUA_EXTRAS[18][3],
     },
     {
         'index': 20,
@@ -489,7 +563,11 @@ const GUAS = [
         'jibing': '有渐恶化之象,病情变化多,为腹、神经系统病症',
         'shiwu': '若能细心四察,可以找回来',
         'susong': '小人当道,愈争论惹起纷争愈多,但终会和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[19][0],
+        'chuantongjiegua': GUA_EXTRAS[19][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[19][2],
+        'gaodaoyiduan': GUA_EXTRAS[19][3],
     },
     {
         'index': 21,
@@ -508,7 +586,11 @@ const GUAS = [
         'jibing': '病情严重,注意足部,心脏、神经系统病变',
         'shiwu': '有被人捷足捡走的可能,寻回的机会不大',
         'susong': '宜采取主动,据理力争',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[20][0],
+        'chuantongjiegua': GUA_EXTRAS[20][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[20][2],
+        'gaodaoyiduan': GUA_EXTRAS[20][3],
     },
     {
         'index': 22,
@@ -527,7 +609,11 @@ const GUAS = [
         'jibing': '病情危重,为心脏、胸腹等病',
         'shiwu': '在家中遗失,将可寻回.不妨试试注意门脚的地方',
         'susong': '宜速求解决,不可拖延,可得贵人调解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[21][0],
+        'chuantongjiegua': GUA_EXTRAS[21][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[21][2],
+        'gaodaoyiduan': GUA_EXTRAS[21][3],
     },
     {
         'index': 23,
@@ -546,7 +632,11 @@ const GUAS = [
         'jibing': '病情恶化之象,防头痛、肠胃、性病等疾',
         'shiwu': '目前还隐藏在家中地上,可惜无法发现,不久会被扫走',
         'susong': '因财而起纷争,小人当道,宜避之则吉',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[22][0],
+        'chuantongjiegua': GUA_EXTRAS[22][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[22][2],
+        'gaodaoyiduan': GUA_EXTRAS[22][3],
     },
     {
         'index': 24,
@@ -565,7 +655,11 @@ const GUAS = [
         'jibing': '病防发,但可治,为肝、肠胃、神经系统病变',
         'shiwu': '有失而得之可能',
         'susong': '多人之事,但经多次扰攘才可解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[23][0],
+        'chuantongjiegua': GUA_EXTRAS[23][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[23][2],
+        'gaodaoyiduan': GUA_EXTRAS[23][3],
     },
 
     {
@@ -585,7 +679,11 @@ const GUAS = [
         'jibing': '不宜意气用事,应尽力疗养为宜,属呼吸系统,头、足之疾病.防泳濡溺、饮宿酒伤胃',
         'shiwu': '找不到,似已遗失',
         'susong': '因女人或死亡之事起纷争,宜和解,否则招凶',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[24][0],
+        'chuantongjiegua': GUA_EXTRAS[24][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[24][2],
+        'gaodaoyiduan': GUA_EXTRAS[24][3],
     },
     {
         'index': 26,
@@ -604,7 +702,11 @@ const GUAS = [
         'jibing': '病虽重,但可治,防胸肺,腹或手部之病,易积劳成疾',
         'shiwu': '有机会寻回.似是在圆形有盖盛存之物中',
         'susong': '因房地产引起,有破财之象,但纠纷可解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[25][0],
+        'chuantongjiegua': GUA_EXTRAS[25][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[25][2],
+        'gaodaoyiduan': GUA_EXTRAS[25][3],
     },
     {
         'index': 27,
@@ -623,7 +725,11 @@ const GUAS = [
         'jibing': '占病为凶,久病者险,为肠胃、咽喉、手足之疾.防寒邪气,中风疾',
         'shiwu': '尽快去找,似被物件上下夹着',
         'susong': '我告他人终不能成,宜速和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[26][0],
+        'chuantongjiegua': GUA_EXTRAS[26][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[26][2],
+        'gaodaoyiduan': GUA_EXTRAS[26][3],
     },
     {
         'index': 28,
@@ -642,7 +748,11 @@ const GUAS = [
         'jibing': '严重,须耐心治疗,为肺、神经系统,女占得妇科经带之疾',
         'shiwu': '无法发现,不能物归原主',
         'susong': '有文书之烦,即使求和也未能如愿',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[27][0],
+        'chuantongjiegua': GUA_EXTRAS[27][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[27][2],
+        'gaodaoyiduan': GUA_EXTRAS[27][3],
     },
     {
         'index': 29,
@@ -661,7 +771,11 @@ const GUAS = [
         'jibing': '病重宜速治,否则难救,注意肾脏,膀胱生殖器病.防耳疾、心疾、血病',
         'shiwu': '找不回来.有失窃可能,或沉在水底.因坎水有困难之意',
         'susong': '有盗贼之讼,或田土之争,有理说不清,凶象',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[28][0],
+        'chuantongjiegua': GUA_EXTRAS[28][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[28][2],
+        'gaodaoyiduan': GUA_EXTRAS[28][3],
     },
     {
         'index': 30,
@@ -680,7 +794,11 @@ const GUAS = [
         'jibing': '急病可解,久病则凶,宜耐心调养、为心脏眼科血疾',
         'shiwu': '动作快,可寻回',
         'susong': '只宜人侵己,不宜己侵人,主动者不利',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[29][0],
+        'chuantongjiegua': GUA_EXTRAS[29][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[29][2],
+        'gaodaoyiduan': GUA_EXTRAS[29][3],
     },
     {
         'index': 31,
@@ -699,7 +817,11 @@ const GUAS = [
         'jibing': '防泌尿系统病,肠胃病及性病,口舌、咽喉、肺病等,须疗养得法,否则不利',
         'shiwu': '尽速找寻,可以取回,延误时机,则找不回来',
         'susong': '提防桃色纠纷,诸事宜和解,有贵人相助',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[30][0],
+        'chuantongjiegua': GUA_EXTRAS[30][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[30][2],
+        'gaodaoyiduan': GUA_EXTRAS[30][3],
     },
     {
         'index': 32,
@@ -718,7 +840,11 @@ const GUAS = [
         'jibing': '为慢性及须长期治疗之疾.防足、头、目、筋骨、肝疾',
         'shiwu': '不能寻回',
         'susong': '小人招祸,但宜速战速决,不利拖延,宜和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[31][0],
+        'chuantongjiegua': GUA_EXTRAS[31][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[31][2],
+        'gaodaoyiduan': GUA_EXTRAS[31][3],
     },
 
     {
@@ -738,7 +864,11 @@ const GUAS = [
         'jibing': '病重,注意血气不调、头、背、筋骨不良之疾.夏宜不安',
         'shiwu': '失落远处,不能寻回',
         'susong': '强行争取亦不利,宜罢手逃避反吉',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[32][0],
+        'chuantongjiegua': GUA_EXTRAS[32][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[32][2],
+        'gaodaoyiduan': GUA_EXTRAS[32][3],
     },
     {
         'index': 34,
@@ -757,7 +887,11 @@ const GUAS = [
         'jibing': '生平少病者遇此卦则不利,注意急性呼吸道感染和脑疾等',
         'shiwu': '不能取回',
         'susong': '忌与人斗气,宜和解收场,否则两败俱伤',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[33][0],
+        'chuantongjiegua': GUA_EXTRAS[33][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[33][2],
+        'gaodaoyiduan': GUA_EXTRAS[33][3],
     },
     {
         'index': 35,
@@ -776,7 +910,11 @@ const GUAS = [
         'jibing': '久病者凶,近病无妨,注意胃肠、筋骨、肺、心脏之疾',
         'shiwu': '动作快,可以寻回来.似是在地上的箱子之类藏着',
         'susong': '最终能圆满解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[34][0],
+        'chuantongjiegua': GUA_EXTRAS[34][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[34][2],
+        'gaodaoyiduan': GUA_EXTRAS[34][3],
     },
     {
         'index': 36,
@@ -795,7 +933,11 @@ const GUAS = [
         'jibing': '凶象.为潜伏已久之疾,注意耳、心脏、腹部之疾或神经病.宜感染',
         'shiwu': '不能立即寻回.正当要遗忘这件事时,会意外地有所发现',
         'susong': '败象,宜和解了事,愈争愈苦',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[35][0],
+        'chuantongjiegua': GUA_EXTRAS[35][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[35][2],
+        'gaodaoyiduan': GUA_EXTRAS[35][3],
     },
     {
         'index': 37,
@@ -814,7 +956,11 @@ const GUAS = [
         'jibing': '注意心脏或胆病,必须小心调理.防风、肠、寒邪之疾',
         'shiwu': '会出现.隐藏在家中.可能是被家人收起来了',
         'susong': '虽产生大疑虑,若行事合理则无碍',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[36][0],
+        'chuantongjiegua': GUA_EXTRAS[36][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[36][2],
+        'gaodaoyiduan': GUA_EXTRAS[36][3],
     },
     {
         'index': 38,
@@ -833,7 +979,11 @@ const GUAS = [
         'jibing': '轻症宜速就医,重症则危,更防断症错误,注意心脏,寒热失调之症,防肠、肺、脾胃之疾病',
         'shiwu': '不能找回.有失窃的可能',
         'susong': '宜速求和解,迟则理屈辞穷',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[37][0],
+        'chuantongjiegua': GUA_EXTRAS[37][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[37][2],
+        'gaodaoyiduan': GUA_EXTRAS[37][3],
     },
     {
         'index': 39,
@@ -852,7 +1002,11 @@ const GUAS = [
         'jibing': '病重,不可疏忽医治,注意肾、胃、手部四肢损伤.防口舌、咽喉之疾病',
         'shiwu': '搜索有困难阻滞而停止,不能寻回',
         'susong': '终必有险,更防血光.不宜起讼,动则招咎',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[38][0],
+        'chuantongjiegua': GUA_EXTRAS[38][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[38][2],
+        'gaodaoyiduan': GUA_EXTRAS[38][3],
     },
     {
         'index': 40,
@@ -871,7 +1025,11 @@ const GUAS = [
         'jibing': '久病可治愈,注意肝、肾、足疾',
         'shiwu': '遗失之物似有被支解破坏的可能,故寻回的机会不大',
         'susong': '一般纠纷皆可解决,宜当机立断,不可拖延',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[39][0],
+        'chuantongjiegua': GUA_EXTRAS[39][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[39][2],
+        'gaodaoyiduan': GUA_EXTRAS[39][3],
     },
 
     {
@@ -891,7 +1049,11 @@ const GUAS = [
         'jibing': '现况病情虽重,积极治疗可愈.身体较衰弱,注意脾胃、肝胆、肠胃、咽喉、贫血等疾',
         'shiwu': '不能寻回',
         'susong': '有斗争之象,损失破财,和解反而获益',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[40][0],
+        'chuantongjiegua': GUA_EXTRAS[40][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[40][2],
+        'gaodaoyiduan': GUA_EXTRAS[40][3],
     },
     {
         'index': 42,
@@ -910,7 +1072,11 @@ const GUAS = [
         'jibing': '可治愈,提防肝胆、肠胃之疾,或性病等,防风、股肱之疾和中风',
         'shiwu': '有望可寻回',
         'susong': '有牢狱之灾,或事因女人、房地产引起,宜和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[41][0],
+        'chuantongjiegua': GUA_EXTRAS[41][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[41][2],
+        'gaodaoyiduan': GUA_EXTRAS[41][3],
     },
     {
         'index': 43,
@@ -929,7 +1095,11 @@ const GUAS = [
         'jibing': '病情重宜速治,防头部、呼吸系统、肿瘤、腹、脾胃、肝经等疾',
         'shiwu': '相信失物已经损坏,不能寻回',
         'susong': '不宜与人争执,因势孤力弱,宜寻求法律途径解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[42][0],
+        'chuantongjiegua': GUA_EXTRAS[42][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[42][2],
+        'gaodaoyiduan': GUA_EXTRAS[42][3],
     },
     {
         'index': 44,
@@ -948,7 +1118,11 @@ const GUAS = [
         'jibing': '病情重,有恶化情况,注意泌尿生殖系统、胸肺和头面之疾病',
         'shiwu': '尽快寻找,可失而得.失物似被重重物件压在最底部',
         'susong': '提防桃色纠纷,是非谣言拨弄',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[43][0],
+        'chuantongjiegua': GUA_EXTRAS[43][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[43][2],
+        'gaodaoyiduan': GUA_EXTRAS[43][3],
     },
     {
         'index': 45,
@@ -967,7 +1141,11 @@ const GUAS = [
         'jibing': '凶象,宜速诊治,防胸腹及咽喉之病变,防不思饮食、口舌疾病',
         'shiwu': '多半能失而复得',
         'susong': '宜解不宜结',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[44][0],
+        'chuantongjiegua': GUA_EXTRAS[44][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[44][2],
+        'gaodaoyiduan': GUA_EXTRAS[44][3],
     },
     {
         'index': 46,
@@ -986,7 +1164,11 @@ const GUAS = [
         'jibing': '病情重,注意腹部,胆管之疾.防足、筋、目、头痛、高血压疾病,易惊恐不安',
         'shiwu': '不易寻回,失物有被束之高阁的可能',
         'susong': '宜持平和态度处理,可争取主动,胜算在握',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[45][0],
+        'chuantongjiegua': GUA_EXTRAS[45][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[45][2],
+        'gaodaoyiduan': GUA_EXTRAS[45][3],
     },
     {
         'index': 47,
@@ -1005,7 +1187,11 @@ const GUAS = [
         'jibing': '危重之象,注意口腔咽喉,泌尿系统,甚至性病',
         'shiwu': '不能寻回',
         'susong': '凡事不宜过于执着,防牢狱之灾',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[46][0],
+        'chuantongjiegua': GUA_EXTRAS[46][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[46][2],
+        'gaodaoyiduan': GUA_EXTRAS[46][3],
     },
     {
         'index': 48,
@@ -1024,7 +1210,11 @@ const GUAS = [
         'jibing': '病情较重且拖延,可能复发.防肝胆、足疾',
         'shiwu': '不能寻回',
         'susong': '有刑罚之象,且受人牵连,及防房地产之诉讼',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[47][0],
+        'chuantongjiegua': GUA_EXTRAS[47][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[47][2],
+        'gaodaoyiduan': GUA_EXTRAS[47][3],
     },
 
     {
@@ -1044,7 +1234,11 @@ const GUAS = [
         'jibing': '病情多变,宜改换求医方法,注意心脏、肾、耳、眼和咽喉之疾',
         'shiwu': '因有弃旧迎新之意,故相信不能寻回',
         'susong': '要改变旧有对策,才可圆满解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[48][0],
+        'chuantongjiegua': GUA_EXTRAS[48][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[48][2],
+        'gaodaoyiduan': GUA_EXTRAS[48][3],
     },
     {
         'index': 50,
@@ -1063,7 +1257,11 @@ const GUAS = [
         'jibing': '病情有变,但无大碍.易染时疾,防目、胆石、心脏、消化系统病',
         'shiwu': '过一段时间后可寻回,惟已变形',
         'susong': '由小事引起,宜和解了事',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[49][0],
+        'chuantongjiegua': GUA_EXTRAS[49][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[49][2],
+        'gaodaoyiduan': GUA_EXTRAS[49][3],
     },
     {
         'index': 51,
@@ -1082,7 +1280,11 @@ const GUAS = [
         'jibing': '注意肝胆、神经系统、足疾,病情反复',
         'shiwu': '可能是受某些事惊吓而遗失,令你惊惶失措,尝试于会发声的东西或电器处寻找',
         'susong': '反覆难平,宜收敛脾气,心平气和',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[50][0],
+        'chuantongjiegua': GUA_EXTRAS[50][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[50][2],
+        'gaodaoyiduan': GUA_EXTRAS[50][3],
     },
     {
         'index': 52,
@@ -1101,7 +1303,11 @@ const GUAS = [
         'jibing': '难治,注意手、脾、肠胃、血管硬化及结核病',
         'shiwu': '可以寻回,但要等一段时间.藏在家中、旅馆、寺院、山中某处',
         'susong': '因小事而化大,宜速求和,忌土姓人',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[51][0],
+        'chuantongjiegua': GUA_EXTRAS[51][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[51][2],
+        'gaodaoyiduan': GUA_EXTRAS[51][3],
     },
     {
         'index': 53,
@@ -1120,7 +1326,11 @@ const GUAS = [
         'jibing': '恶化之象,注意胃、肠、背痛、肺、股疾病',
         'shiwu': '多数不能寻回',
         'susong': '宜进不宜退,据理力争可胜',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[52][0],
+        'chuantongjiegua': GUA_EXTRAS[52][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[52][2],
+        'gaodaoyiduan': GUA_EXTRAS[52][3],
     },
     {
         'index': 54,
@@ -1139,7 +1349,11 @@ const GUAS = [
         'jibing': '病危重,极易恶化,为中风、肝病、气管及性病等.防口舌、咽喉、呼吸道疾病',
         'shiwu': '失物虽有被归还的可能,但自身仍有损失',
         'susong': '事牵连于女性,宜力求和解,但我方必有损失',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[53][0],
+        'chuantongjiegua': GUA_EXTRAS[53][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[53][2],
+        'gaodaoyiduan': GUA_EXTRAS[53][3],
     },
     {
         'index': 55,
@@ -1158,7 +1372,11 @@ const GUAS = [
         'jibing': '病况重,注意肝足疾及血压、心脏、胃肠等疾',
         'shiwu': '尽快找寻,可失而复得',
         'susong': '自己虽势如破竹,胜券在握,但也应提高警惕',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[54][0],
+        'chuantongjiegua': GUA_EXTRAS[54][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[54][2],
+        'gaodaoyiduan': GUA_EXTRAS[54][3],
     },
     {
         'index': 56,
@@ -1177,7 +1395,11 @@ const GUAS = [
         'jibing': '病情变化不定,宜速就医.防胸膈以上部位疾病',
         'shiwu': '尽快去找,应可寻回,失物似在屋舍之外,留意镜子之类物体,可提供线索',
         'susong': '宜速战速决,时间一拖则不利',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[55][0],
+        'chuantongjiegua': GUA_EXTRAS[55][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[55][2],
+        'gaodaoyiduan': GUA_EXTRAS[55][3],
     },
 
     {
@@ -1197,7 +1419,11 @@ const GUAS = [
         'jibing': '久病则凶,且病情变化多端.防肠、皮肤、中风等疾病',
         'shiwu': '遗失在远处,不能寻回',
         'susong': '不易和解,但一方肯让步则易解决',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[56][0],
+        'chuantongjiegua': GUA_EXTRAS[56][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[56][2],
+        'gaodaoyiduan': GUA_EXTRAS[56][3],
     },
     {
         'index': 58,
@@ -1216,7 +1442,11 @@ const GUAS = [
         'jibing': '久病则凶,注意生活检点,戒酒色,防喉部疾病',
         'shiwu': '遗失物似为金属或金钱,有望失而复得,但是迟一点.且多数已损毁或损失',
         'susong': '似为两个女性及金钱之事惹起,宜有和事佬出面调解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[57][0],
+        'chuantongjiegua': GUA_EXTRAS[57][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[57][2],
+        'gaodaoyiduan': GUA_EXTRAS[57][3],
     },
     {
         'index': 59,
@@ -1235,7 +1465,11 @@ const GUAS = [
         'jibing': '幼年体弱多病,长大后渐康 ,注意血液、内分泌',
         'shiwu': '不能寻回',
         'susong': '凡事宜大事化小,小事化无,诉讼可解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[58][0],
+        'chuantongjiegua': GUA_EXTRAS[58][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[58][2],
+        'gaodaoyiduan': GUA_EXTRAS[58][3],
     },
     {
         'index': 60,
@@ -1254,7 +1488,11 @@ const GUAS = [
         'jibing': '注意泌尿及消化系病变,宜速就医.防耳疾.涸冷之痛、血病等',
         'shiwu': '不能寻回',
         'susong': '局势僵持不下,宜让则讼可解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[59][0],
+        'chuantongjiegua': GUA_EXTRAS[59][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[59][2],
+        'gaodaoyiduan': GUA_EXTRAS[59][3],
     },
     {
         'index': 61,
@@ -1273,7 +1511,11 @@ const GUAS = [
         'jibing': '金木交战之象,注意胸腹脾胃等病',
         'shiwu': '可失而复得,但需要一段时间',
         'susong': '为突发事件,宜把握第一时间处理,迟则反凶',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[60][0],
+        'chuantongjiegua': GUA_EXTRAS[60][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[60][2],
+        'gaodaoyiduan': GUA_EXTRAS[60][3],
     },
     {
         'index': 62,
@@ -1292,7 +1534,11 @@ const GUAS = [
         'jibing': '病情有恶化之象,但及时诊治则吉,防手足、口舌、膀胱、肠胃之疾',
         'shiwu': '不能寻回',
         'susong': '不宜各走极端,宜多沟通和解',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[61][0],
+        'chuantongjiegua': GUA_EXTRAS[61][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[61][2],
+        'gaodaoyiduan': GUA_EXTRAS[61][3],
     },
     {
         'index': 63,
@@ -1311,7 +1557,11 @@ const GUAS = [
         'jibing': '短期虽有好转,但好景不常.防耳痛、心疾、肾疾',
         'shiwu': '应可寻回',
         'susong': '有理说不清,仍须把握最有利时机争取主动,迟则反见凶',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[62][0],
+        'chuantongjiegua': GUA_EXTRAS[62][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[62][2],
+        'gaodaoyiduan': GUA_EXTRAS[62][3],
     },
     {
         'index': 64,
@@ -1330,7 +1580,11 @@ const GUAS = [
         'jibing': '病情不稳定,注意心肾不交、失眠、血液等病',
         'shiwu': '不能寻回',
         'susong': '宜拖延时间,日久可得贵人之助,和解了事',
-        'jiaoshiyilin': ''
+        'jiaoshiyilin': '',
+        'zhouyiguaci': GUA_EXTRAS[63][0],
+        'chuantongjiegua': GUA_EXTRAS[63][1],
+        'zhangmingrenjiegua': GUA_EXTRAS[63][2],
+        'gaodaoyiduan': GUA_EXTRAS[63][3],
     }
 ]
 

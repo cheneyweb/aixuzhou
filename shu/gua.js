@@ -26,6 +26,9 @@ function getRes(Content) {
         res += `\n\n疾病｜${item.jibing}`
         res += `\n\n失物｜${item.shiwu}`
         res += `\n\n诉讼｜${item.susong}`
+
+        res += `\n\n【周易卦辞】\n${item.zhouyiguaci}`
+        res += `\n\n【张铭仁解卦】\n${item.chuantongjiegua}`
     }
     return res
 }
