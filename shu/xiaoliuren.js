@@ -23,7 +23,8 @@ function getRes(Content) {
             res = `【九宫小六壬】出卦 - `
         }
 
-        res += `${lunar.getLunarHour()}\n`
+        const lunarHour = lunar.getLunarHour()
+        res += `${lunar.getLunarHourFormat(lunarHour)}\n`
 
         const tian = type[(n1 - 1) % type.length]
         const di = type[(n1 + n2 - 2) % type.length]
@@ -32,13 +33,13 @@ function getRes(Content) {
         if (cmd[0] === MENU_A) {
             const filters = xiaoliuren.LICHUNFENGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
 
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ○`
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ◐`
-            res += `\n世位•人宫 [${ren.name}] ${ren.liushou}|${ren.wuxing} ●`
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[tian.wuxing + lunarHour]}○`
+            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[di.wuxing + lunarHour]}◐`
+            res += `\n世位•人宫 [${ren.name}] ${ren.liushou}|${ren.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[ren.wuxing + lunarHour]}●`
 
             res += `\n\n【六亲八卦十神】`
             for (let item of filters) {
-                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing}`
+                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[item.wuxing + lunarHour]}`
             }
 
             res += `\n\n【大象运势卦意】`
@@ -48,13 +49,13 @@ function getRes(Content) {
         } else if (cmd[0] === MENU_B) {
             const filters = xiaoliuren.JIUGONGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
 
-            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.bagua}|${tian.wuxing} ○`
-            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.bagua}|${di.wuxing} ◐`
-            res += `\n世位•人宫 [${ren.name}] ${ren.bagua}|${ren.wuxing} ●`
+            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.bagua}|${tian.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[tian.wuxing + lunarHour]}○`
+            res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.bagua}|${di.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[di.wuxing + lunarHour]}◐`
+            res += `\n世位•人宫 [${ren.name}] ${ren.bagua}|${ren.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[ren.wuxing + lunarHour]}●`
 
             res += `\n\n【六亲八卦十神】`
             for (let item of filters) {
-                res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.bagua}|${item.wuxing}`
+                res += `\n${xiaoliuren.JIUGONGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.bagua}|${item.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[item.wuxing + lunarHour]}`
             }
 
             res += `\n\n【大象运势卦意】`
