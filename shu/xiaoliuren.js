@@ -11,13 +11,13 @@ function getRes(Content) {
     const n3 = +cmd[3]
 
     let res = ''
-    let type = xiaoliuren.LICHUNFENGS
+    let type = xiaoliuren.CHUANTONGS
 
     if ((cmd[0] !== MENU_A && cmd[0] !== MENU_B) || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
         res = '【输入格式错误】，参考如下举例：\n小六壬 5 19 6\n或\n九宫小六壬 21 2 11'
     } else {
         if (cmd[0] === MENU_A) {
-            res = `【李淳风小六壬】出卦 - `
+            res = `【传统小六壬】出卦 - `
         } else if (cmd[0] === MENU_B) {
             type = xiaoliuren.JIUGONGS
             res = `【九宫小六壬】出卦 - `
@@ -31,15 +31,15 @@ function getRes(Content) {
         const ren = type[(n1 + n2 + n3 - 3) % type.length]
 
         if (cmd[0] === MENU_A) {
-            const filters = xiaoliuren.LICHUNFENGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
+            const filters = xiaoliuren.CHUANTONGS.filter(o => o.name !== tian.name && o.name !== di.name && o.name !== ren.name)
 
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[tian.wuxing + lunarHour]}○`
-            res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[di.wuxing + lunarHour]}◐`
+            res += `\n${xiaoliuren.CHUANTONGLIUQINMAP[ren.name][tian.name]} [${tian.name}] ${tian.liushou}|${tian.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[tian.wuxing + lunarHour]}○`
+            res += `\n${xiaoliuren.CHUANTONGLIUQINMAP[ren.name][di.name]} [${di.name}] ${di.liushou}|${di.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[di.wuxing + lunarHour]}◐`
             res += `\n世位•人宫 [${ren.name}] ${ren.liushou}|${ren.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[ren.wuxing + lunarHour]}●`
 
             res += `\n\n【六亲八卦十神】`
             for (let item of filters) {
-                res += `\n${xiaoliuren.LICHUNFENGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[item.wuxing + lunarHour]}`
+                res += `\n${xiaoliuren.CHUANTONGLIUQINMAP[ren.name][item.name]} [${item.name}] ${item.liushou}|${item.wuxing} ${xiaoliuren.SHIERZHANGSHENGMAP[item.wuxing + lunarHour]}`
             }
 
             res += `\n\n【大象运势卦意】`
